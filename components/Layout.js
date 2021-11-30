@@ -9,7 +9,6 @@ function Layout({ children }) {
     return (
         <div className="bg-gray-50 h-screen overflow-y-scroll scrollbar-hide">
             <Header />
-            <Banner />
             {children}
             <GoogleMap />
             <Footer />

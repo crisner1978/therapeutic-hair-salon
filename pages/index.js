@@ -1,25 +1,34 @@
-import Head from 'next/head'
+import Head from "next/head";
+import Banner from "../components/Banner";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="">
       <Head>
         <title>Therapeutic Hair Salon & Scalp Clinic</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      
+      <Banner>
+        <Image
+          src="https://res.cloudinary.com/dtram9qiy/image/upload/v1638239490/my-uploads/inrjo2lmlyin9gdtgvy6.jpg"
+          layout="fill"
+          objectFit="cover"
+          objectPosition="top"
+          priority
+        />
+      </Banner>
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
         <h1 className="text-6xl font-bold">
-          Welcome to{' '}
+          Welcome to{" "}
           <a className="text-blue-600" href="https://nextjs.org">
             Next.js!
           </a>
         </h1>
 
         <p className="mt-3 text-2xl">
-          Get started by editing{' '}
+          Get started by editing{" "}
           <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
             pages/index.js
           </code>
@@ -67,8 +76,6 @@ export default function Home() {
           </a>
         </div>
       </main>
-
-      
     </div>
-  )
+  );
 }
