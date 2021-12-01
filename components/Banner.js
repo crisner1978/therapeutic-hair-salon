@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Banner = ({ children }) => {
   return (
-    <div className="relative h-[650px] md:h-[700px] xl:h-[750px] -top-44 right-0">
+    <section className="relative h-[600px] lg:h-[650px] xl:h-[750px] -top-44 right-0">
       {children}
       <Image
         src="/images/cellGradientBackground@2x.png"
@@ -18,10 +18,10 @@ const Banner = ({ children }) => {
           
         />
       <div className="absolute top-1/2 w-full text-center text-white">
-        <h1 className="text-5xl md:text-[85px]">THERAPEUTIC</h1>
-        <h2 className="text-xl md:text-3xl">HAIR SALON & SCALP CLINIC</h2>
+        <h1 className="text-5xl lg:text-[85px]">THERAPEUTIC</h1>
+        <h2 className="text-xl lg:text-3xl">HAIR SALON & SCALP CLINIC</h2>
       </div>
-    </div>
+    </section>
   );
 };
 

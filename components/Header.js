@@ -3,8 +3,8 @@ import Dropdown from "./Dropdown";
 
 const Header = () => {
   return (
-    <div className="sticky bg-transparent z-50">
-      <div className="flex items-center justify-between px-10 py-16">
+    <header className="sticky bg-transparent z-50">
+      <nav className="flex items-center justify-between px-10 py-16">
         <Dropdown />
         <div>
           <a
@@ -14,8 +14,8 @@ const Header = () => {
             <ImFacebook className="h-6 w-8 text-white" />
           </a>
         </div>
-      </div>
-    </div>
+      </nav>
+    </header>
   );
 };
 

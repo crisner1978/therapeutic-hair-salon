@@ -1,5 +1,6 @@
 import Banner from "../components/Banner";
 import Image from "next/image";
+import BookAppt from "../components/BookAppt";
 
 const Book = () => {
   return (
@@ -13,6 +14,7 @@ const Book = () => {
           priority
         />
       </Banner>
+      <BookAppt />
     </div>
   );
 };
