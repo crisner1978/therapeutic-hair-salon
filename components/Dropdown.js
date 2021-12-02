@@ -2,7 +2,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { FaBars } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";
-import { MenuItems } from "./menuItems";
+import { MenuItems } from "./ListData";
 import MyLink from "./MyLink";
 
 function Dropdown() {
@@ -32,10 +32,12 @@ function Dropdown() {
                   <span className="text-[25px] font-semibold">MENU</span>
                 </div>
               </Menu.Button>
-              {MenuItems.map(({active, href, name}, index) => (
+              {MenuItems.map(({ active, href, name }, index) => (
                 <Menu.Item key={index}>
-                {({ active }) => <MyLink active={active} href={href} name={name} />}
-              </Menu.Item>
+                  {({ active }) => (
+                    <MyLink active={active} href={href} name={name} />
+                  )}
+                </Menu.Item>
               ))}
             </Menu.Items>
           </Transition>

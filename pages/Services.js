@@ -1,5 +1,6 @@
 import Banner from "../components/Banner";
 import Image from "next/image";
+import SalonServices from "../components/SalonServices";
 
 const Services = () => {
   return (
@@ -13,6 +14,7 @@ const Services = () => {
           priority
         />
       </Banner>
+      <SalonServices />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import Banner from "../components/Banner";
 import Image from "next/image";
+import Staff from "../components/Staff";
 
 const Team = () => {
   return (
@@ -13,6 +14,7 @@ const Team = () => {
           priority
         />        
       </Banner>
+      <Staff />
     </div>
   );
 };

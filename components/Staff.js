@@ -1,8 +1,8 @@
 const Staff = () => {
     return (
-        <div>
+        <section>
             <h1>We're the employees</h1>
-        </div>
+        </section>
     )
 }
 

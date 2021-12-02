@@ -1,11 +1,20 @@
 import Link from "next/Link";
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/router";
 
 const MyLink = ({ href, name, active, ...rest }) => {
-  const {asPath} = useRouter()
+  const { asPath } = useRouter();
   return (
-    <Link href={href} passHref >
-      <a {...rest} className={` ${asPath === href ? "ml-[5px]" : "hover:translate-x-[5px] transform ease-linear duration-150"}`}>{name.toUpperCase()}</a>
+    <Link href={href} passHref>
+      <a
+        {...rest}
+        className={` ${
+          asPath === href
+            ? "ml-[5px]"
+            : "hover:translate-x-[5px] transform ease-linear duration-150"
+        }`}
+      >
+        {name.toUpperCase()}
+      </a>
     </Link>
   );
 };

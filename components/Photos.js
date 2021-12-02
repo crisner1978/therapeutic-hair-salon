@@ -1,4 +1,4 @@
-const Work = () => {
+const Photos = () => {
     return (
         <div>
             <h1>I'm the gallery component</h1>
@@ -6,4 +6,4 @@ const Work = () => {
     )
 }
 
-export default Work
+export default Photos

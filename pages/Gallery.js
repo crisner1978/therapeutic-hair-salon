@@ -1,5 +1,6 @@
 import Banner from "../components/Banner";
 import Image from "next/image";
+import Photos from "../components/Photos";
 
 const Gallery = () => {
   return (
@@ -13,6 +14,7 @@ const Gallery = () => {
           priority
         />
       </Banner>
+      <Photos />
     </div>
   );
 };
