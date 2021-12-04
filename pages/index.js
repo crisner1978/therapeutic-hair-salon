@@ -22,6 +22,7 @@ export default function Home() {
           objectFit="cover"
           objectPosition="top"
           priority
+          as="photos"
         />
       </Banner>
       <main>

@@ -1,18 +1,11 @@
-import "tailwindcss/tailwind.css";
-import "../styles/globals.css"
-import Layout from "../components/layout";
-import { RecoilRoot } from "recoil"
-
+import "../styles/globals.css";
+import AppProviders from "./AppProviders";
 
 function MyApp({ Component, pageProps }) {
-
   return (
-    <RecoilRoot>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </RecoilRoot>
-      
+    <AppProviders>
+      <Component {...pageProps} />
+    </AppProviders>
   );
 }
 

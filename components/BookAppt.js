@@ -1,8 +1,6 @@
-import Link from "next/Link";
 import { useRouter } from "next/router";
-import { modalState } from "../atoms/modalAtom";
 import { useRecoilState } from "recoil";
-import Modal from "./Modal";
+import { modalState } from "../atoms/modalAtom";
 
 const BookAppt = () => {
   const { asPath } = useRouter();
@@ -31,7 +29,8 @@ const BookAppt = () => {
           don't hesitate to ask.
         </p>
         <div className="flex justify-center">
-          <div onClick={() => setOpen(true)}
+          <div
+            onClick={() => setOpen(true)}
             className="cursor-pointer border border-white px-14 py-3 text-xl font-semibold 
           hover:bg-white hover:text-black transition-all transform ease duration-200 hover:inset-2"
           >

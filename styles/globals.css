@@ -9,3 +9,16 @@
     }
 }
 
+@layer components {
+    .input {
+        @apply flex flex-col mx-4;
+    
+    }
+    .formInput { 
+        @apply bg-gray-200 bg-opacity-90 text-lg focus:ring-0 outline-none border-none mb-5 rounded-md;
+    }
+    .toasty {
+        @apply text-2xl font-semibold mt-80
+    }
+}
+

@@ -23,7 +23,7 @@ const Banner = ({ children }) => {
       </div>
       <a
         href="/book"
-        className="hidden md:flex flex-col text-right fixed py-[10px] pr-10 pl-6 text-xl text-white bg-black right-0 top-1/4 z-50"
+        className="hidden md:flex flex-col text-right fixed py-[10px] pr-10 pl-6 text-xl text-white bg-black right-0 top-1/4 z-40"
       >
         <span className="font-semibold">901 323-9900</span>
         <span>BOOK ONLINE NOW</span>
