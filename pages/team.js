@@ -7,10 +7,10 @@ const Team = () => {
     <div>
       <Banner>
         <Image
-          src="http://res.cloudinary.com/dtram9qiy/image/upload/v1638294068/my-uploads/p7233rjdqsvjnkop2gdm.jpg"
+          src="https://res.cloudinary.com/dtram9qiy/image/upload/v1638294068/my-uploads/salon_tools.jpg"
           layout="fill"
           objectFit="cover"
-          objectPosition="bottom"
+          objectPosition="left"
           priority
         />        
       </Banner>

@@ -18,7 +18,7 @@ const AppProviders = ({ children }) => {
       <ReactQueryDevtools />
       <Toaster position="top-center" containerClassName="toasty" toastOptions={{ duration: 3000 }} />
       <RecoilRoot>
-        <Layout>{children}</Layout>{" "}
+        <Layout>{children}</Layout>
       </RecoilRoot>
     </QueryClientProvider>
   );
