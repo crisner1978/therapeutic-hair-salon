@@ -1,5 +1,5 @@
 import { ImFacebook } from "react-icons/im";
-import Dropdown from "./Dropdown";
+import Dropdown from "../Dropdown";
 
 const Header = () => {
   return (

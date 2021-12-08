@@ -1,4 +1,4 @@
-import { workDays } from "./ListData";
+import { workDays } from './ListData'
 
 const SalonHours = () => {
   return (

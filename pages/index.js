@@ -1,12 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/Link";
-import Banner from "../components/Banner";
 import BookAppt from "../components/BookAppt";
-import Photos from "../components/Photos";
-import SalonHours from "../components/SalonHours";
-import SalonServices from "../components/SalonServices";
-import Staff from "../components/Staff";
+import Banner from "../components/shared/Banner";
+import Photos from "../components/shared/Photos";
+import SalonHours from "../components/shared/SalonHours";
+import SalonServices from "../components/shared/SalonServices";
+import Staff from "../components/shared/Staff";
 
 export default function Home() {
   return (

@@ -1,7 +1,7 @@
-import Banner from "../components/Banner";
+import Banner from "../components/shared/Banner";
 import Image from "next/image";
-import BookAppt from "../components/BookAppt";
-import SalonHours from "../components/SalonHours";
+import BookAppt from "../components/shared/BookAppt";
+import SalonHours from "../components/shared/SalonHours";
 
 const Book = () => {
   return (

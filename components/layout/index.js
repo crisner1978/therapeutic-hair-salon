@@ -1,7 +1,7 @@
-import Footer from "./Footer";
-import GoogleMap from "./GoogleMap";
+import Footer from './Footer'
+import GoogleMap from "../shared/GoogleMap";
 import Header from "./Header";
-import Modal from "./Modal";
+import Modal from "../Modal"
 
 function Layout({ children }) {
   return (

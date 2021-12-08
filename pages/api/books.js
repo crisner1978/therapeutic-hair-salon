@@ -4,10 +4,14 @@ export default async function handler(req, res){
     const client = await clientPromise
     const db = client.db("hair_salon");
 
-    const bookings = await db
+    const books = await db
         .collection("appts")
-        .find({"slot": { $exists: true}})
+        .aggregate([
+            {
+                $match: { "slot.date": req.query.term}
+            }
+        ])
         .toArray();
 
-        res.json(bookings);;
+        res.json(books);;
 }

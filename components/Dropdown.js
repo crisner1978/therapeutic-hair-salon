@@ -2,7 +2,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { FaBars } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";
-import { MenuItems } from "./ListData";
+import { MenuItems } from "./shared/ListData";
 import MyLink from "./MyLink";
 
 function Dropdown() {

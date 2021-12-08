@@ -1,6 +1,6 @@
-import Banner from "../components/Banner";
+import Banner from "../components/shared/Banner";
 import Image from "next/image";
-import SalonServices from "../components/SalonServices";
+import SalonServices from "../components/shared/SalonServices";
 
 const Services = () => {
   return (

@@ -1,6 +1,6 @@
-import Banner from "../components/Banner";
+import Banner from "../components/shared/Banner";
 import Image from "next/image";
-import Staff from "../components/Staff";
+import Staff from "../components/shared/Staff";
 
 const Team = () => {
   return (
