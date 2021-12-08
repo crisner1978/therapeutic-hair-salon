@@ -1,9 +1,8 @@
 import { FormControlLabel, Radio } from "@mui/material";
 import moment from "moment";
-import React, { useState } from "react";
+import React from "react";
 
 export default function RenderApptTimes({ data, register }) {
-    const [state, setState] = useState([])
   const slots = [...Array(8).keys()];
   return slots.map((slot) => {
     const time1 = moment().hour(9).minute(0).add(slot, "hours");
