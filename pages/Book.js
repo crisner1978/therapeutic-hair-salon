@@ -1,6 +1,6 @@
 import Banner from "../components/shared/Banner";
 import Image from "next/image";
-import BookAppt from "../components/shared/BookAppt";
+import BookAppt from "../components/BookAppt"
 import SalonHours from "../components/shared/SalonHours";
 
 const Book = () => {

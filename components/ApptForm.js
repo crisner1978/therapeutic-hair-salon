@@ -107,11 +107,10 @@ export default function ApptForm() {
         </div>
         <FormControl component="fieldset">
           <label className={`${!today && "hidden"}`}>Available Times</label>
-          <RadioGroup row aria-label="gender" name="row-radio-buttons-group">
+          <RadioGroup row aria-label="time" name="row-radio-buttons-group">
             {today && (
               <RenderApptTimes
                 data={data}
-                isLoading={isLoading}
                 register={register}
               />
             )}

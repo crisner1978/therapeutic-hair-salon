@@ -1,6 +1,6 @@
 import Banner from "../components/shared/Banner";
 import Image from "next/image";
-import Photos from "../components/Photos";
+import Photos from "../components/shared/Photos";
 
 const Gallery = () => {
   return (
