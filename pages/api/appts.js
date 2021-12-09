@@ -5,20 +5,19 @@ export default async function handler(req, res) {
 }
 
 async function createAppt(req, res) {
-  try {
-    const client = await clientPromise;
-    const db = client.db("hair_salon");
+  const client = await clientPromise;
+  const apptsCol = client.db("hair_salon").collection("appts");
+  
 
-    await db.collection("appts").insertOne(JSON.parse(req.body));
+  try {
+    await apptsCol.createIndex({ "slot.date": 1, "slot.time": 1 }, { unique: true });
+    await apptsCol.insertOne(JSON.parse(req.body));
 
     return res.json({
       message: "Appointment booked successfully",
       success: true,
     });
   } catch (error) {
-    return res.json({
-      message: new Error(error.message),
-      success: false,
-    });
+    console.error(error);
   }
 }

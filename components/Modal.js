@@ -14,7 +14,7 @@ const Modal = () => {
         className="fixed z-50 inset-0 overflow-y-auto scrollbar-hide"
         onClose={setOpen}
       >
-        <div className="flex items-center justify-center min-h-screen pt-4 sm:px-4 pb-20 text-center">
+        <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center">
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -44,9 +44,9 @@ const Modal = () => {
           >
             <div
               className="fixed inline-block bg-white rounded-md p-5 text-left overflow-hidden
-                shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full "
+                shadow-xl transform transition-all my-8 align-middle max-w-sm w-full "
             >
-              <h1 className="text-xl font-semibold text-center">SCHEDULE YOUR APPOINTMENT</h1>
+              <h1 className="text-xl font-bold text-center mb-3">BOOK YOUR APPOINTMENT</h1>
               <ApptForm />
             </div>
           </Transition.Child>

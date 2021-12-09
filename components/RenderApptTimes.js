@@ -14,13 +14,15 @@ export default function RenderApptTimes({ data, register }) {
     // Matches slot booked to slot to disable double booking
     const taken = data?.map((item) => parseInt(item?.slot.time));
     let slotFilled = taken?.includes(slot);
-    console.log("123456", slotFilled);
+    console.log("123456", taken);
 
     return (
       <React.Fragment key={slot}>
         {!slotFilled && (
           <FormControlLabel
-            {...register("slot")}
+            {...register("slot", {
+                required: 'Select a time',
+            })}
             // key={slot}
             value={slot}
             // disabled={slotFilled}
