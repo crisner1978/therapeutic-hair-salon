@@ -10,15 +10,28 @@
 }
 
 @layer components {
-    .input {
-        @apply flex flex-col mx-4;
     
+    .toasty {
+        @apply text-2xl font-semibold
+    }
+    
+    /* form styles */
+    .inputWrapper {
+        @apply flex flex-col mx-4;    
+    }
+    .formLabel {
+        @apply text-sm font-black text-gray-600 pb-1
     }
     .formInput { 
         @apply bg-gray-200 bg-opacity-90 text-lg focus:ring-0 outline-none border-none mb-3 rounded-md;
+    }    
+    .formSubmitBtn {
+        @apply text-xl font-bold disabled:text-gray-300
+        disabled:cursor-not-allowed py-2 text-blue-600 mx-4
+        hover:text-white hover:bg-blue-600 rounded-md
     }
-    .toasty {
-        @apply text-2xl font-semibold mt-80
+    .formErrorMsg {
+        @apply absolute right-8 text-red-500 font-black text-sm
     }
 }
 

@@ -1,5 +1,7 @@
 import FormControl from "@mui/material/FormControl";
 import RadioGroup from "@mui/material/RadioGroup";
+import { addMonths } from "date-fns";
+import { isPossiblePhoneNumber } from "libphonenumber-js/min";
 import moment from "moment";
 import { useRouter } from "next/dist/client/router";
 import { useState } from "react";
@@ -7,10 +9,13 @@ import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Controller, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import PhoneInput from "react-phone-number-input/react-hook-form-input";
+import "react-phone-number-input/style.css";
 import { useMutation, useQuery } from "react-query";
 import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtom";
 import { fetchWithTimeout } from "../lib/fetchWithTimeout";
+import { isWorkWeek } from "../lib/helpers";
 import RenderApptTimes from "./RenderApptTimes";
 
 export default function ApptForm() {
@@ -19,48 +24,30 @@ export default function ApptForm() {
   const [today, setToday] = useState(null);
   router.query = today;
 
- 
-
   const {
     control,
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({ mode: "onBlur" });
 
-  const { mutateAsync, isLoading, isError, isSuccess } = useMutation(
+  const { mutateAsync, isError } = useMutation(
     (bookedAppt) =>
       fetchWithTimeout("/api/appts", {
         method: "POST",
         body: JSON.stringify(bookedAppt),
-        timeout: 6000,
-      }), {
-        onSuccess: async () => {
-          toast.success('Appointment Booked!');
-          setOpen(false)
-        },
-        onError: async () => {
-          toast.error("Pick an available time")
-        }
-
-      }
-  );
-
-  console.log('isError =>>>',isError)
-  console.log('isSuccess =>>>',isSuccess)
-  console.log('isLoading =>>>',isLoading)
-
-
-  console.log("LET'S SEE IF =>>>", isLoading, isError, isSuccess);
-
-  const isWorkWeek = (date) => {
-    if (date.getDay() === 0 || date.getDay() === 1) {
-      return false;
-    } else {
-      return true;
+        timeout: 3000,
+      }),
+    {
+      onSuccess: async () => {
+        toast.success("Appointment Booked!");
+        setOpen(false);
+      },
+      onError: async () => {
+        toast.error("Pick an available time");
+      },
     }
-  };
+  );
 
   const onSubmit = (data) => {
     const { name, email, phone, date, slot } = data;
@@ -71,13 +58,12 @@ export default function ApptForm() {
       timestamp: new Date(date),
       completed: false,
       slot: {
-        date: date.toLocaleDateString(),
+        date: moment(date).format("MM/D/YYYY"),
         time: slot,
         booked: true,
       },
     };
     mutateAsync(bookedAppt);
-    reset();
   };
 
   const fetchSchedule = (today) =>
@@ -86,7 +72,6 @@ export default function ApptForm() {
     );
 
   const { data } = useQuery(["appts", today], () => fetchSchedule(today));
-  console.log("datadata", data);
 
   return (
     <div className="">
@@ -112,8 +97,10 @@ export default function ApptForm() {
                 popperPlacement="bottom"
                 selected={field.value}
                 filterDate={isWorkWeek}
+                minDate={new Date()}
+                maxDate={addMonths(new Date(), 3)}
                 dateFormat="MMMM d, yyyy"
-                className="relative"
+                className="relative formInput min-w-[312px] text-center"
                 useWeekdaysShort={true}
               />
             )}
@@ -121,11 +108,11 @@ export default function ApptForm() {
         </div>
         <FormControl component="fieldset">
           <label
-            className={`${
-              !today && "hidden"
-            } font-black my-1 text-center text-blue-600`}
+            className={`${!today && "hidden"} font-black mb-1 text-center ${
+              isError ? "text-red-600" : "text-blue-600"
+            } `}
           >
-            Available Times
+            {isError ? "Pick an Available Time" : "Available Times"}
           </label>
           <RadioGroup
             row
@@ -143,11 +130,8 @@ export default function ApptForm() {
           </RadioGroup>
         </FormControl>
         <div className="pt-2">
-          <div className="input">
-            <label
-              className="text-sm font-black text-gray-600 pb-1"
-              htmlFor="NAME"
-            >
+          <div className="inputWrapper">
+            <label className="formLabel" htmlFor="NAME">
               NAME
             </label>
             <input
@@ -167,79 +151,51 @@ export default function ApptForm() {
               name="name"
               id="name"
             />
-            <span className="absolute right-8 text-red-500 font-black text-sm">
-              {errors.name?.message}
-            </span>
+            <span className="formErrorMsg">{errors.name?.message}</span>
           </div>
-          <div className="input">
-            <label
-              className="text-sm font-black text-gray-600 pb-1"
-              htmlFor="PHONE"
-            >
+          <div className="inputWrapper">
+            <label className="formLabel" htmlFor="PHONE">
               PHONE
             </label>
-            <input
-              {...register("phone", {
-                required: "PHONE IS REQUIRED",
-                minLength: 6,
-                maxLength: 12,
-              })}
+            <PhoneInput
               className="formInput"
-              type="tel"
               name="phone"
-              id="phone"
+              control={control}
+              rules={{
+                required: "PHONE IS REQUIRED",
+                validate: (value) =>
+                  isPossiblePhoneNumber(value) || "VALID PHONE IS REQUIRED",
+              }}
+              country="US"
             />
-            <span className="absolute right-8 text-red-500 font-black text-sm">
-              {errors.phone?.message}
-            </span>
+            <span className="formErrorMsg">{errors.phone?.message}</span>
           </div>
-          <div className="input">
-            <label
-              className="text-sm font-black text-gray-600 pb-1"
-              htmlFor="EMAIL"
-            >
+          <div className="inputWrapper">
+            <label className="formLabel" htmlFor="EMAIL">
               EMAIL
             </label>
             <input
               {...register("email", {
                 required: "EMIAL IS REQUIRED",
-                pattern: /^\S+@\S+$/i,
+                pattern: {
+                  value:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  message: "VALID EMAIL IS REQUIRED",
+                },
               })}
               className="formInput"
               type="text"
               name="email"
               id="email"
             />
-            <span className="absolute right-8 text-red-500 font-black text-sm">
-              {errors.email?.message}
-            </span>
+            <span className="formErrorMsg">{errors.email?.message}</span>
           </div>
         </div>
 
-        <button
-          type="submit"
-          // disabled={slotfilled}
-          className="text-xl font-bold disabled:text-gray-300
-            disabled:cursor-not-allowed py-2 text-blue-600 mx-4
-            hover:text-white hover:bg-blue-600 rounded-md"
-        >
+        <button type="submit" className="formSubmitBtn">
           MAKE APPOINTMENT
         </button>
       </form>
     </div>
   );
-}
-
-export async function getServerSideProps(context) {
-  const client = await clientPromise;
-  const db = client.db("hair_salon");
-
-  const data = await db
-    .collection("appts")
-    .find({ slot: { $exists: true } })
-    .toArray();
-
-  return {
-    props: { data },
-  };
 }
