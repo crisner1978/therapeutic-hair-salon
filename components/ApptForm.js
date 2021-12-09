@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import { useMutation, useQuery } from "react-query";
 import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtom";
+import { fetchWithTimeout } from "../lib/fetchWithTimeout";
 import RenderApptTimes from "./RenderApptTimes";
 
 export default function ApptForm() {
@@ -17,6 +18,8 @@ export default function ApptForm() {
   const [open, setOpen] = useRecoilState(modalState);
   const [today, setToday] = useState(null);
   router.query = today;
+
+ 
 
   const {
     control,
@@ -28,16 +31,17 @@ export default function ApptForm() {
 
   const { mutateAsync, isLoading, isError, isSuccess } = useMutation(
     (bookedAppt) =>
-      fetch("/api/appts", {
+      fetchWithTimeout("/api/appts", {
         method: "POST",
         body: JSON.stringify(bookedAppt),
+        timeout: 6000,
       }), {
         onSuccess: async () => {
           toast.success('Appointment Booked!');
           setOpen(false)
         },
         onError: async () => {
-          !isLoading && toast.error("Pick an available time")
+          toast.error("Pick an available time")
         }
 
       }
