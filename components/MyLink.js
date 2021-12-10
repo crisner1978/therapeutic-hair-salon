@@ -8,9 +8,7 @@ const MyLink = ({ href, name, active, ...rest }) => {
       <a
         {...rest}
         className={` ${
-          asPath === href
-            ? "ml-[5px]"
-            : "hover:translate-x-[5px] transform ease-linear duration-150"
+          asPath === href || active ? "ml-[5px] text-blue-600 font-semibold" : "hover:translate-x-[5px] transition-all transform ease-out duration-300"
         }`}
       >
         {name.toUpperCase()}
