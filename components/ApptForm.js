@@ -79,7 +79,30 @@ export default function ApptForm() {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col space-y-1"
       >
-        <div className=" flex justify-center mx-auto">
+        <FormControl component="fieldset">
+          <label
+            className={`${!today && "hidden"} font-black mb-1 text-center ${
+              isError ? "text-red-600" : "text-blue-600"
+            } `}
+          >
+            {isError ? "Pick an Available Time" : "Available Times"}
+          </label>
+          <RadioGroup
+            row
+            aria-label="time"
+            name="row-radio-buttons-group"
+            className="!grid grid-cols-2 mx-auto gap-x-3 mr-3 mb-1"
+          >
+            {today && (
+              <RenderApptTimes
+                data={data}
+                register={register}
+                errors={errors}
+              />
+            )}
+          </RadioGroup>
+        </FormControl>
+        <div className=" flex-col justify-center mx-auto">
           <Controller
             as={ReactDatePicker}
             valueName="selected"
@@ -95,41 +118,18 @@ export default function ApptForm() {
                 placeholderText="SELECT DATE"
                 showPopperArrow={false}
                 popperPlacement="bottom"
+                popperClassName=''
                 selected={field.value}
                 filterDate={isWorkWeek}
                 minDate={new Date()}
                 maxDate={addMonths(new Date(), 3)}
                 dateFormat="MMMM d, yyyy"
-                className="relative formInput min-w-[312px] text-center"
+                className="relative formInput min-w-[312px] text-center text-gray-600 placeholder-blue-600 font-black"
                 useWeekdaysShort={true}
               />
             )}
           />
-        </div>
-        <FormControl component="fieldset">
-          <label
-            className={`${!today && "hidden"} font-black mb-1 text-center ${
-              isError ? "text-red-600" : "text-blue-600"
-            } `}
-          >
-            {isError ? "Pick an Available Time" : "Available Times"}
-          </label>
-          <RadioGroup
-            row
-            aria-label="time"
-            name="row-radio-buttons-group"
-            className="!grid grid-cols-2 mx-auto gap-x-3 mr-3"
-          >
-            {today && (
-              <RenderApptTimes
-                data={data}
-                register={register}
-                errors={errors}
-              />
-            )}
-          </RadioGroup>
-        </FormControl>
-        <div className="pt-2">
+        
           <div className="inputWrapper">
             <label className="formLabel" htmlFor="NAME">
               NAME

@@ -27,7 +27,7 @@ export default function RenderApptTimes({ data, register, errors }) {
             label={time1.format("h a") + " - " + time2.format("h a")}
           />
         )}
-        <span className="absolute top-[6.6px] -right-1 text-red-500 font-black text-sm">
+        <span className="absolute top-[2.5px] -right-1 text-red-500 font-black text-sm">
               {errors.slot?.message}
             </span>
       </React.Fragment>

@@ -17,13 +17,13 @@
     
     /* form styles */
     .inputWrapper {
-        @apply flex flex-col mx-4;    
+        @apply flex flex-col;    
     }
     .formLabel {
         @apply text-sm font-black text-gray-600 pb-1
     }
     .formInput { 
-        @apply bg-gray-200 bg-opacity-90 text-lg focus:ring-0 outline-none border-none mb-3 rounded-md;
+        @apply bg-gray-200 bg-opacity-90 font-semibold focus:ring-0 outline-none border-none mb-3 rounded-md;
     }    
     .formSubmitBtn {
         @apply text-xl font-bold disabled:text-gray-300
