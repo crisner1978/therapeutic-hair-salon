@@ -33,7 +33,7 @@ export default function ApptForm() {
 
   const { mutateAsync, isError } = useMutation(
     (bookedAppt) =>
-      fetchWithTimeout("/api/appts", {
+      fetchWithTimeout("/api/book", {
         method: "POST",
         body: JSON.stringify(bookedAppt),
         timeout: 3000,
@@ -67,11 +67,11 @@ export default function ApptForm() {
   };
 
   const fetchSchedule = (today) =>
-    fetch("http://localhost:3000/api/books?term=" + today).then((res) =>
+    fetch("http://localhost:3000/api/available?term=" + today).then((res) =>
       res.json()
     );
 
-  const { data } = useQuery(["appts", today], () => fetchSchedule(today));
+  const { data } = useQuery(["available", today], () => fetchSchedule(today));
 
   return (
     <div className="">
