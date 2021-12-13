@@ -4,8 +4,10 @@ import { FaBars } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";
 import { MenuItems } from "../shared/ListData";
 import MyLink from "../MyLink";
+import { useUser } from "@auth0/nextjs-auth0";
 
 function Dropdown() {
+  const { user } = useUser();
   return (
     <div className="w-60 -mt-1 -ml-1">
       <Menu as="div" className="relative inline-block text-left -rotate-1">
@@ -39,6 +41,37 @@ function Dropdown() {
                   )}
                 </Menu.Item>
               ))}
+              {!user ? (
+                <Menu.Item>
+                  {({ active }) => (
+                    <a
+                      className={` ${
+                        active
+                          ? "ml-[5px] text-blue-600 font-semibold"
+                          : "hover:translate-x-[5px] transition-all transform ease-out duration-300"
+                      }`}
+                      href="/api/auth/login"
+                    >
+                      LOGIN
+                    </a>
+                  )}
+                </Menu.Item>
+              ) : (
+                <Menu.Item>
+                  {({ active }) => (
+                    <a
+                      className={` ${
+                        active
+                          ? "ml-[5px] text-blue-600 font-semibold"
+                          : "hover:translate-x-[5px] transition-all transform ease-out duration-300"
+                      }`}
+                      href="/api/auth/logout"
+                    >
+                      LOGOUT
+                    </a>
+                  )}
+                </Menu.Item>
+              )}
             </Menu.Items>
           </Transition>
         </>

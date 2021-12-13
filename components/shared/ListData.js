@@ -10,11 +10,6 @@ export const MenuItems = [
     active: false,
   },
   {
-    name: "Our Team",
-    href: "/team",
-    active: false,
-  },
-  {
     name: "Gallery",
     href: "/gallery",
     active: false,
@@ -55,4 +50,16 @@ export const workDays = [
     name: "SUNDAY",
     hours: "CLOSED",
   },
-]
+];
+
+export const hairScalp = [
+  "Protein",
+  "Hot oil",
+  "Hair rebuilding / retexturing",
+  "Exfoliation / detoxify",
+  "Vitamin PH balance",
+  "Dandruff removal",
+  "Follicle treatment",
+  "Tailored hairstyles",
+  "Other",
+];

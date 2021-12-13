@@ -6,7 +6,6 @@ import Banner from "../components/shared/Banner";
 import Photos from "../components/shared/Photos";
 import SalonHours from "../components/shared/SalonHours";
 import SalonServices from "../components/shared/SalonServices";
-import Staff from "../components/shared/Staff";
 
 export default function Home() {
   return (
@@ -37,20 +36,12 @@ export default function Home() {
               talented master clinicians truly love what they do. Our services
               are offered to men, women and children of all ethnic backgrounds.
             </p>
-            <div className="flex justify-center">
-              <Link href="/team">
-                <div className="cursor-pointer border border-black px-14 py-3 text-xl font-semibold hover:bg-black hover:text-white transition-all transform ease duration-200 hover:inset-2">
-                  GET TO KNOW US
-                </div>
-              </Link>
-            </div>
           </div>
         </section>
         <SalonServices />
         <SalonHours />
         <BookAppt />
         <Photos />
-        <Staff />
       </main>
     </div>
   );
