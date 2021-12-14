@@ -5,15 +5,25 @@ import { GrClose } from "react-icons/gr";
 import { MenuItems } from "../shared/ListData";
 import MyLink from "../MyLink";
 import { useUser } from "@auth0/nextjs-auth0";
+import { useRouter } from "next/router";
+import { HiOutlineX } from 'react-icons/hi'
 
 function Dropdown() {
   const { user } = useUser();
+  const { asPath } = useRouter();
+  console.log(asPath);
+
   return (
     <div className="w-60 -mt-1 -ml-1">
       <Menu as="div" className="relative inline-block text-left -rotate-1">
         <>
+        
           <Menu.Button>
-            <div className="flex items-center text-white">
+            <div
+              className={`flex items-center ${
+                asPath === "/dashboard" ? "text-black" : 'text-white'
+              }`}
+            >
               <FaBars className="w-8 h-6" aria-hidden="true" />
               <span className="text-[25px] font-semibold">MENU</span>
             </div>
@@ -27,10 +37,17 @@ function Dropdown() {
             leaveFrom="translate-x-0"
             leaveTo="-translate-x-full"
           >
-            <Menu.Items className="bg-white bg-opacity-90 text-opacity-100 text-gray-9 flex flex-col absolute w-60 inset-x-0 -left-1 -top-14 space-y-5 py-10 -mt-2 -ml-10 pl-[74px] h-96 focus:ring-0 outline-none border-none">
+            <Menu.Items
+              className={`${
+                asPath === "/dashboard"
+                  ? "bg-black text-white"
+                  : "bg-white bg-opacity-90 text-opacity-100 text-gray-900"
+              } flex flex-col absolute w-60 inset-x-0 -left-1 -top-14 space-y-5 py-10 -mt-2 -ml-10 pl-[74px] h-96 focus:ring-0 outline-none border-none`}
+            >
               <Menu.Button className="mt-6 -ml-7">
-                <div className="flex items-center text-black">
-                  <GrClose className="w-7 h-6" aria-hidden="true" />
+                <div className={`flex items-center ${asPath === '/dashboard' ? 'text-white': 'text-black'}`}>
+                  <HiOutlineX className={`mt-1 w-8 h-8 ${asPath === '/dashboard' ? 'text-white': 'text-black'}`} aria-hidden="true" />
+                 
                   <span className="text-[25px] font-semibold">MENU</span>
                 </div>
               </Menu.Button>
