@@ -27,43 +27,41 @@ const CreateUser = () => {
     reset();
   };
   return (
-    <>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col max-w-sm mr-auto px-3 sm:ml-6 py-10"
-      >
-        <span className="mx-auto mb-5 text-xl text-red-600 font-black">
-          {message}
-        </span>
-        <input
-          {...register("name")}
-          className="formInput"
-          type="text"
-          name="name"
-          id="name"
-          placeholder="name"
-        />
-        <input
-          {...register("email")}
-          className="formInput"
-          placeholder="email"
-          type="text"
-          name="email"
-          id="email"
-        />
-        <input
-          {...register("password")}
-          className="formInput"
-          placeholder="password"
-          type="password"
-          name="password"
-          id="password"
-        />
-        <button className="formSubmitBtn w-full mx-auto" type="submit">
-          Create Profile
-        </button>
-      </form>
-    </>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col max-w-sm mr-auto px-3 sm:ml-6 py-10"
+    >
+      <span className="mx-auto mb-5 text-xl text-red-500 font-black">
+        {message}
+      </span>
+      <input
+        {...register("name")}
+        className="formInput"
+        type="text"
+        name="name"
+        id="name"
+        placeholder="name"
+      />
+      <input
+        {...register("email")}
+        className="formInput"
+        placeholder="email"
+        type="text"
+        name="email"
+        id="email"
+      />
+      <input
+        {...register("password")}
+        className="formInput"
+        placeholder="password"
+        type="password"
+        name="password"
+        id="password"
+      />
+      <button className="formSubmitBtn w-full mx-auto" type="submit">
+        Create Profile
+      </button>
+    </form>
   );
 };
 

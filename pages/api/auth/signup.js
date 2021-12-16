@@ -1,4 +1,4 @@
-import { hash } from "bcryptjs";
+import { hashPass } from "../../../lib/encrypt";
 import clientPromise from "../../../lib/mongodb";
 
 export default async function handler(req, res) {
@@ -14,7 +14,7 @@ export default async function handler(req, res) {
       if (!existingUser) {
         return res.json({ message: "Access Denied", success: false });
       } else {
-        await userCol.replaceOne({ email: email }, { name, email, password: await hash(password, 12) });
+        await userCol.replaceOne({ email: email }, { name, email, password: await hashPass(password, 12) });
         return res.json({
           message: "User created",
           success: true,

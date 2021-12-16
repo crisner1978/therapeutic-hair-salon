@@ -35,11 +35,11 @@ const Dashboard = () => {
   });
   return (
     <div className="h-full">
-      <h1 className="text-center text-3xl font-semibold my-10">Appointments</h1>
+      <h1 className="text-center text-3xl font-semibold my-10 shadow-md pb-5">Appointments</h1>
       {data?.map(({ slot: { date, time }, name, phone, email, _id: id }) => (
         <div
           key={id}
-          className="pb-4 mb-4 shadow-md text-lg px-10 sm:flex sm:justify-center"
+          className="pb-4 mb-4 shadow-md max-w-3xl mx-auto text-lg px-10 sm:flex sm:justify-center"
         >
           <div className="flex flex-col justify-center pb-2 sm:pb-2">
             <p>Date: {date}</p>
