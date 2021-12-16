@@ -1,25 +1,12 @@
 import "../styles/globals.css";
-import AppProviders from "./AppProviders";
+import AppProviders from "../components/AppProviders";
 import { SessionProvider } from "next-auth/react";
-import Layout from "../components/layout";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
-  if (Component.getLayout) {
-    return Component.getLayout(
-      <SessionProvider session={session}>
-        <AppProviders>
-          <Component {...pageProps} />
-        </AppProviders>
-      </SessionProvider>
-    );
-  }
-
   return (
     <SessionProvider session={session}>
       <AppProviders>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <Component {...pageProps} />
       </AppProviders>
     </SessionProvider>
   );

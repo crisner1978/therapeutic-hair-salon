@@ -1,12 +1,11 @@
+import { getSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { formatPhoneNumber } from "react-phone-number-input";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import CreateUser from "../../components/CreateUser";
-import Footer from "../../components/layout/Footer";
-import Header from "../../components/layout/Header";
 
-const Dashboard = () => {
+const Dashboard = ({ session }) => {
   const router = useRouter();
   const queryClient = useQueryClient();
 
@@ -33,9 +32,12 @@ const Dashboard = () => {
       toast.success("Appt deleted");
     },
   });
+
   return (
-    <div className="h-full">
-      <h1 className="text-center text-3xl font-semibold my-10 shadow-md pb-5">Appointments</h1>
+    <div className="py-10">
+      <h1 className="text-center text-3xl font-semibold my-10 shadow-md pb-5">
+        Appointments
+      </h1>
       {data?.map(({ slot: { date, time }, name, phone, email, _id: id }) => (
         <div
           key={id}
@@ -70,12 +72,32 @@ const Dashboard = () => {
 
 export default Dashboard;
 
-Dashboard.getLayout = function PageLayout(page) {
-  return (
-    <>
-      <Header />
-      {page}
-      <Footer />
-    </>
-  );
-};
+// Dashboard.getLayout = function PageLayout(page) {
+//   return (
+//     <>
+
+//       <Header />
+//       {page}
+//       <Footer />
+//     </>
+//   );
+// };
+
+export async function getServerSideProps({ req }) {
+  const session = await getSession({ req });
+  console.log(session);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {
+      session,
+    },
+  };
+}

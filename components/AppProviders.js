@@ -2,7 +2,7 @@ import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { RecoilRoot } from "recoil";
-import Layout from "../components/layout";
+import Layout from "./layout";
 
 const AppProviders = ({ children }) => {
   const queryClient = new QueryClient({
@@ -21,7 +21,9 @@ const AppProviders = ({ children }) => {
         containerClassName="toasty"
         toastOptions={{ duration: 2000 }}
       />
-      <RecoilRoot>{children}</RecoilRoot>
+      <RecoilRoot>
+        <Layout>{children}</Layout>
+      </RecoilRoot>
     </QueryClientProvider>
   );
 };

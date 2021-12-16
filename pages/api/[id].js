@@ -2,7 +2,9 @@ import clientPromise from "../../lib/mongodb";
 import { ObjectId } from "mongodb";
 
 export default async function handler(req, res) {
-  return deleteAppt(req, res);
+  if (req.method === "DELETE") {
+    return deleteAppt(req, res);
+  }
 }
 
 async function deleteAppt(req, res) {

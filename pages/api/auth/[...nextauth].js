@@ -2,6 +2,9 @@ import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import clientPromise from "../../../lib/mongodb";
 import { compare } from "bcryptjs";
+import { verifyPass } from "../../../lib/encrypt";
+
+
 
 export default NextAuth({
   session: {
@@ -12,37 +15,50 @@ export default NextAuth({
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: {
-          label: "Username",
+        email: {
+          label: "Email",
           type: "text",
           placeholder: "jsmith@test.com",
         },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const client = await clientPromise;
-        const userCol = client.db("hair_salon").collection("nextauth");
-
-        // You need to provide your own logic here that takes the credentials
-        // submitted and returns either a object representing a user or value
-        // that is false/null if the credentials are invalid.
-        // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
-        // You can also use the `req` object to obtain additional parameters
-        // (i.e., the request IP address)
-        const res = await fetch("http://localhost:3000/api/login", {
-          method: "POST",
-          body: JSON.stringify(credentials),
-          headers: { "Content-Type": "application/json" },
-        });
-        const user = await res.json();
-
-        // If no error and we have user data, return it
-        if (res.ok && user) {
-          return user;
+        try {
+          const client = await clientPromise;
+          const user = await client
+            .db("hair_salon")
+            .collection("nextauth")
+            .findOne({ email: credentials.email });
+          if (!user) {
+            throw new Error("No User Found!");
+          }
+          const isValid = await verifyPass(credentials.password, user.password);
+          if (!isValid) {
+            throw new Error("Invalid Passowrd!");
+          }
+          return { name: user.name, email: user.email, role: user.role };
+        } catch (error) {
+          throw new Error(error);
         }
-
-        return null;
       },
     }),
   ],
+  callbacks: {
+    jwt: async ({ token, user }) => {
+      if (user) {
+        token.role = user.role
+      }
+      return token;
+    },
+    session: async ({ session, token }) => {
+      session.role = token.role;
+      return session;
+    },
+  },
+  secret: "test",
+  jwt: {
+    secret: "test",
+    encryption: true,
+  },
+  debug: true,
 });

@@ -1,5 +1,5 @@
 import { Menu, Transition } from "@headlessui/react";
-import { signIn, signOut } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { Fragment } from "react";
 import { FaBars } from "react-icons/fa";
@@ -8,7 +8,9 @@ import MyLink from "../MyLink";
 import { MenuItems } from "../shared/ListData";
 
 function Dropdown() {
-  let user;
+  const {data: session, loading} = useSession()
+
+  console.log(session, loading);
   const { asPath } = useRouter();
 
   return (
@@ -70,13 +72,13 @@ function Dropdown() {
                   )}
                 </Menu.Item>
               ))}
-              {!user ? (
+              {!session ? (
                 <Menu.Item>
                   {({ active }) => (
                     <span
-                      className={`"cursor-pointer" ${
+                      className={`${
                         active
-                          ? "ml-[5px] text-blue-600 font-semibold"
+                          ? "ml-[5px] text-blue-600 font-semibold cursor-pointer"
                           : "hover:translate-x-[5px] transition-all transform ease-out duration-300"
                       }`}
                       onClick={() => signIn()}
@@ -91,7 +93,7 @@ function Dropdown() {
                     <span
                       className={` ${
                         active
-                          ? "ml-[5px] text-blue-600 font-semibold"
+                          ? "ml-[5px] text-blue-600 font-semibold cursor-pointer"
                           : "hover:translate-x-[5px] transition-all transform ease-out duration-300"
                       }`}
                       onClick={() => signOut()}
