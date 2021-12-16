@@ -12,7 +12,6 @@ export default async function handler(req, res) {
       .toArray();
 
     res.json(scheduled);
-    
   } catch (error) {
     console.log(error);
   }

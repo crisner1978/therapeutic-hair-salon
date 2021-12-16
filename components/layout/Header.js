@@ -4,7 +4,7 @@ import Dropdown from "./Dropdown";
 
 const Header = () => {
   const { asPath } = useRouter();
-  console.log(asPath)
+
   return (
     <header className="sticky bg-transparent z-50">
       <nav className="flex items-center justify-between px-10 py-16">
