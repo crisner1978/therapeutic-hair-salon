@@ -1,6 +1,8 @@
 import Banner from "../components/shared/Banner";
 import Image from "next/image";
 import Photos from "../components/shared/Photos";
+import BookAppt from "../components/BookAppt";
+import GoogleMap from "../components/shared/GoogleMap";
 
 const Gallery = () => {
   return (
@@ -15,6 +17,8 @@ const Gallery = () => {
         />
       </Banner>
       <Photos />
+      <BookAppt />
+      <GoogleMap />
     </div>
   );
 };

@@ -1,6 +1,8 @@
 import Banner from "../components/shared/Banner";
 import Image from "next/image";
 import SalonServices from "../components/shared/SalonServices";
+import GoogleMap from "../components/shared/GoogleMap";
+import BookAppt from "../components/BookAppt";
 
 const Services = () => {
   return (
@@ -15,6 +17,8 @@ const Services = () => {
         />
       </Banner>
       <SalonServices />
+      <BookAppt />
+      <GoogleMap />
     </div>
   );
 };

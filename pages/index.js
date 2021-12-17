@@ -1,11 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/Link";
 import BookAppt from "../components/BookAppt";
 import Banner from "../components/shared/Banner";
 import Photos from "../components/shared/Photos";
 import SalonHours from "../components/shared/SalonHours";
 import SalonServices from "../components/shared/SalonServices";
+import GoogleMap from "../components/shared/GoogleMap"
 
 export default function Home() {
   return (
@@ -42,6 +42,7 @@ export default function Home() {
         <SalonHours />
         <BookAppt />
         <Photos />
+        <GoogleMap />
       </main>
     </div>
   );

@@ -2,6 +2,7 @@ import Banner from "../components/shared/Banner";
 import Image from "next/image";
 import BookAppt from "../components/BookAppt"
 import SalonHours from "../components/shared/SalonHours";
+import GoogleMap from "../components/shared/GoogleMap";
 
 const Book = () => {
   return (
@@ -29,6 +30,7 @@ const Book = () => {
       </section>
       <BookAppt />
       <SalonHours />
+      <GoogleMap />
     </div>
   );
 };

@@ -1,21 +1,17 @@
+import { useRouter } from "next/router";
+import { hairScalp } from "./ListData";
+
 const SalonServices = () => {
+  const { asPath } = useRouter()
   return (
-    <section className="flex flex-col items-center justify-center w-full flex-1 px-10 text-center lg:text-left pb-20 pt-10 bg-black text-white">
+    <section className={`flex flex-col items-center justify-center w-full flex-1 px-10 text-center lg:text-left pb-20  ${asPath === '/services' ? 'bg-white text-black -mt-36 pt-4' : 'bg-black text-white pt-10'} `}>
       <h1 className="text-3xl font-medium">THE SERVICES</h1>
-      <div className="mt-7 text-xl max-w-4xl">
-        <p className="mb-6">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non
-          praesentium placeat sint ducimus numquam distinctio perspiciatis quasi
-          eos, ipsa quia, dolores deleniti error sapiente adipisci sunt? Aliquam
-          porro impedit quia illum eos, repellat, quisquam voluptatum maiores
-          nobis fugit nemo molestiae officiis. Incidunt id tenetur obcaecati,
-          praesentium, ratione dicta sunt cum quidem corrupti quis debitis culpa
-          hic possimus fuga iusto sequi illum officia, quod assumenda.
-          Necessitatibus esse porro unde, reprehenderit tempora ipsum fuga nemo
-          amet labore totam eius laudantium dolorem rerum temporibus fugiat
-          consequuntur culpa expedita quae neque quisquam nobis quaerat maiores.
-          Eaque rem, delectus distinctio libero eos veritatis eveniet officia?
-        </p>
+      <div className="mt-10 text-xl max-w-4xl">
+        <ul className="text-center space-y-5">
+          {hairScalp.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
       </div>
     </section>
   );

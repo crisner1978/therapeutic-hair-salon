@@ -1,10 +1,7 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-import clientPromise from "../../../lib/mongodb";
-import { compare } from "bcryptjs";
 import { verifyPass } from "../../../lib/encrypt";
-
-
+import clientPromise from "../../../lib/mongodb";
 
 export default NextAuth({
   session: {
@@ -46,7 +43,7 @@ export default NextAuth({
   callbacks: {
     jwt: async ({ token, user }) => {
       if (user) {
-        token.role = user.role
+        token.role = user.role;
       }
       return token;
     },
