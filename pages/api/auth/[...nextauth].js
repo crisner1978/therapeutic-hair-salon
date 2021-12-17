@@ -55,9 +55,9 @@ export default NextAuth({
       return session;
     },
   },
-  secret: "test",
+  secret: "fjkerabgiveowpnjnrvjmcxdkgnr132rvdfz",
   jwt: {
-    secret: "test",
+    secret: "fjkerabgiveowpnjnrvjmcxdkgnr132rvdfz",
     encryption: true,
   },
   debug: true,
