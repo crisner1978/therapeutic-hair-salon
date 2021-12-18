@@ -28,10 +28,13 @@
     .formSubmitBtn {
         @apply text-xl font-bold disabled:text-gray-300
         disabled:cursor-not-allowed py-2 text-blue-600 mx-4
-        hover:text-white hover:bg-blue-600 rounded-md
+        hover:text-white hover:bg-blue-600 rounded-md max-w-full
     }
     .formErrorMsg {
         @apply absolute right-8 text-red-500 font-black text-sm
+    }
+    .userInfo {
+        @apply text-sm sm:text-base font-medium text-gray-600 
     }
 }
 

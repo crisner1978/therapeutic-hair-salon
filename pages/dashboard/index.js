@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { formatPhoneNumber } from "react-phone-number-input";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import CreateUser from "../../components/CreateUser";
 
 const Dashboard = ({ session }) => {
   const router = useRouter();
@@ -11,8 +10,7 @@ const Dashboard = ({ session }) => {
 
   const { data } = useQuery("schedule", () => fetchSchedule());
 
-  const fetchSchedule = () =>
-    fetch("http://localhost:3000/api/scheduled").then((res) => res.json());
+  const fetchSchedule = () => fetch("/api/scheduled").then((res) => res.json());
 
   const handleDelete = async (id) => {
     router.query = id;
@@ -34,8 +32,8 @@ const Dashboard = ({ session }) => {
   });
 
   return (
-    <div className="py-10">
-      <h1 className="text-center text-3xl font-semibold my-10 shadow-md pb-5">
+    <div className="pb-20">
+      <h1 className="text-center text-3xl font-medium my-10 shadow-md pb-5">
         Appointments
       </h1>
       {data?.map(({ slot: { date, time }, name, phone, email, _id: id }) => (
@@ -65,23 +63,11 @@ const Dashboard = ({ session }) => {
           </div>
         </div>
       ))}
-      <CreateUser />
     </div>
   );
 };
 
 export default Dashboard;
-
-// Dashboard.getLayout = function PageLayout(page) {
-//   return (
-//     <>
-
-//       <Header />
-//       {page}
-//       <Footer />
-//     </>
-//   );
-// };
 
 export async function getServerSideProps({ req }) {
   const session = await getSession({ req });

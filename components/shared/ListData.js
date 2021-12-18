@@ -19,6 +19,11 @@ export const MenuItems = [
     href: "/book",
     active: false,
   },
+  {
+    name: "Login",
+    href: "/auth/signin",
+    active: false,
+  },
 ];
 
 export const workDays = [

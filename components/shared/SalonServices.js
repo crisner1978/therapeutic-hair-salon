@@ -8,8 +8,8 @@ const SalonServices = () => {
       <h1 className="text-3xl font-medium">THE SERVICES</h1>
       <div className="mt-10 text-xl max-w-4xl">
         <ul className="text-center space-y-5">
-          {hairScalp.map((item) => (
-            <li>{item}</li>
+          {hairScalp.map((item, index) => (
+            <li key={index}>{item}</li>
           ))}
         </ul>
       </div>

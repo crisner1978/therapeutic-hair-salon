@@ -28,6 +28,7 @@ export default function ApptForm() {
     control,
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({ mode: "onBlur" });
 
@@ -64,10 +65,11 @@ export default function ApptForm() {
       },
     };
     mutateAsync(bookedAppt);
+    reset()
   };
 
   const fetchSchedule = (today) =>
-    fetch("http://localhost:3000/api/available?term=" + today).then((res) =>
+    fetch("/api/available?term=" + today).then((res) =>
       res.json()
     );
 
@@ -176,7 +178,7 @@ export default function ApptForm() {
             </label>
             <input
               {...register("email", {
-                required: "EMIAL IS REQUIRED",
+                required: "EMAIL IS REQUIRED",
                 pattern: {
                   value:
                     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -192,7 +194,7 @@ export default function ApptForm() {
           </div>
         </div>
 
-        <button type="submit" className="formSubmitBtn">
+        <button type="submit" className={`formSubmitBtn ${router.asPath === '/scheduler' && 'mx-0 '}`}>
           MAKE APPOINTMENT
         </button>
       </form>

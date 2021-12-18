@@ -14,7 +14,7 @@ const Header = () => {
             href="https://www.facebook.com/Therapeutic-Hair-Salon-Scalp-Clinic-161112793917864"
             target="_blank"
           >
-            <ImFacebook className={`h-6 w-8 ${asPath === '/dashboard' ? 'text-black': 'text-white'} hover:text-blue-600`} />
+            <ImFacebook className={`h-6 w-8 ${asPath === "/dashboard" || asPath === "/auth/signin" || asPath === '/profile' || asPath === '/scheduler' ? 'text-black': 'text-white'} hover:text-blue-600`} />
           </a>
         </div>
       </nav>

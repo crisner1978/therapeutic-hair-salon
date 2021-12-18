@@ -1,5 +1,5 @@
 import { Menu, Transition } from "@headlessui/react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { getProviders, signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { Fragment } from "react";
 import { FaBars } from "react-icons/fa";
@@ -8,9 +8,11 @@ import MyLink from "../MyLink";
 import { MenuItems } from "../shared/ListData";
 
 function Dropdown() {
-  const {data: session, loading} = useSession()
+  const { data: session, status } = useSession();
 
-  console.log(session, loading);
+  console.log(getProviders());
+
+  console.log(session);
   const { asPath } = useRouter();
 
   return (
@@ -20,7 +22,7 @@ function Dropdown() {
           <Menu.Button>
             <div
               className={`flex items-center ${
-                asPath === "/dashboard" || asPath === "/dashboard#"
+                asPath === "/dashboard" || asPath === "/auth/signin" || asPath === '/profile' || asPath === '/scheduler'
                   ? "text-black"
                   : "text-white"
               }`}
@@ -40,22 +42,23 @@ function Dropdown() {
           >
             <Menu.Items
               className={`${
-                asPath === "/dashboard"
+                asPath === "/dashboard" || asPath === "/auth/signin" || asPath === '/profile' || asPath === '/scheduler'
                   ? "bg-black text-white"
                   : "bg-white bg-opacity-90 text-opacity-100 text-gray-900"
-              } flex flex-col absolute w-60 inset-x-0 -left-1 -top-14 space-y-5 py-10 -mt-2 -ml-10 pl-[74px] h-96 focus:ring-0 outline-none border-none`}
+              } flex flex-col absolute w-60 inset-x-0 -left-1 -top-14 space-y-5 py-10 -mt-2 -ml-10 pl-[74px] h-96 
+                focus:ring-0 outline-none border-none`}
             >
               <Menu.Button className="mt-6 -ml-7">
                 <div
                   className={`flex items-center ${
-                    asPath === "/dashboard#" || asPath === "/dashboard"
+                    asPath === "/dashboard" || asPath === "/auth/signin" || asPath === '/profile' || asPath === '/scheduler'
                       ? "text-white"
                       : "text-black"
                   }`}
                 >
                   <HiOutlineX
                     className={`mt-1 w-8 h-8 ${
-                     asPath === "/dashboard"
+                      asPath === "/dashboard" || asPath === "/auth/signin" || asPath === '/profile' || asPath === '/scheduler'
                         ? "text-white"
                         : "text-black"
                     }`}
@@ -65,43 +68,46 @@ function Dropdown() {
                   <span className="text-[25px] font-semibold">MENU</span>
                 </div>
               </Menu.Button>
-              {MenuItems.map(({ active, href, name }, index) => (
-                <Menu.Item key={index}>
-                  {({ active }) => (
-                    <MyLink active={active} href={href} name={name} />
-                  )}
-                </Menu.Item>
-              ))}
-              {!session ? (
-                <Menu.Item>
-                  {({ active }) => (
-                    <span
-                      className={`${
-                        active
-                          ? "ml-[5px] text-blue-600 font-semibold cursor-pointer"
-                          : "hover:translate-x-[5px] transition-all transform ease-out duration-300"
-                      }`}
-                      onClick={() => signIn()}
-                    >
-                      LOGIN
-                    </span>
-                  )}
-                </Menu.Item>
+              {session ? (
+                <>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <MyLink active={active} href="/profile" name="profile" />
+                    )}
+                  </Menu.Item>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <MyLink active={active} href="/dashboard" name="dashboard" />
+                    )}
+                  </Menu.Item>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <MyLink active={active} href='/scheduler' name='scheduler' />
+                    )}
+                  </Menu.Item>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <span
+                        className={` ${
+                          active
+                            ? "ml-[5px] text-blue-600 font-semibold cursor-pointer"
+                            : "hover:translate-x-[5px] transition-all transform ease-out duration-300"
+                        }`}
+                        onClick={() => signOut()}
+                      >
+                        LOGOUT
+                      </span>
+                    )}
+                  </Menu.Item>
+                </>
               ) : (
-                <Menu.Item>
-                  {({ active }) => (
-                    <span
-                      className={` ${
-                        active
-                          ? "ml-[5px] text-blue-600 font-semibold cursor-pointer"
-                          : "hover:translate-x-[5px] transition-all transform ease-out duration-300"
-                      }`}
-                      onClick={() => signOut()}
-                    >
-                      LOGOUT
-                    </span>
-                  )}
-                </Menu.Item>
+                MenuItems.map(({ href, name }, index) => (
+                  <Menu.Item key={index}>
+                    {({ active }) => (
+                      <MyLink active={active} href={href} name={name} />
+                    )}
+                  </Menu.Item>
+                ))
               )}
             </Menu.Items>
           </Transition>

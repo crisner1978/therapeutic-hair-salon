@@ -40,6 +40,9 @@ export default NextAuth({
       },
     }),
   ],
+  pages: {
+    signIn: "/auth/signin",
+  },
   callbacks: {
     jwt: async ({ token, user }) => {
       if (user) {
@@ -50,6 +53,9 @@ export default NextAuth({
     session: async ({ session, token }) => {
       session.role = token.role;
       return session;
+    },
+    redirect: async(url, baseUrl) => {
+      return '/profile';
     },
   },
   secret: "fjkerabgiveowpnjnrvjmcxdkgnr132rvdfz",

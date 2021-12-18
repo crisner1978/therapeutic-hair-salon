@@ -16,7 +16,7 @@ async function createAppt(req, res) {
     await apptsCol.insertOne(JSON.parse(req.body));
 
     return res.json({
-      message: "Appointment booked successfully",
+      message: "Appointment booked!",
       success: true,
     });
   } catch (error) {

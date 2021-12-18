@@ -29,7 +29,7 @@ const CreateUser = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col max-w-sm mr-auto px-3 sm:ml-6 py-10"
+      className="flex flex-col max-w-sm mx-auto px-3 sm:ml-6 py-10"
     >
       <span className="mx-auto mb-5 text-xl text-red-500 font-black">
         {message}
