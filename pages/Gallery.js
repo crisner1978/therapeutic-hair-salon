@@ -16,7 +16,10 @@ const Gallery = () => {
           priority
         />
       </Banner>
-      <Photos />
+      <section className="h-full mb-96 flex flex-col items-center justify-center w-full flex-1 px-10 text-center lg:text-left pb-[90px] -mt-24">
+      <h1 className="text-3xl font-medium mb-11">OUR WORK</h1>
+        <Photos />
+      </section>
       <BookAppt />
       <GoogleMap />
     </div>

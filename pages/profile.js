@@ -94,7 +94,7 @@ function profile({ session }) {
               {users?.map((item) => (
                 <li
                   key={item._id}
-                  className="grid grid-cols-1 shadow-md px-10 py-4 sm:grid-cols-3 mb-5 gap-2 cursor-pointer hover:scale-105 transition-all transform duration-150 ease-out"
+                  className="grid grid-cols-1 shadow-md px-10 py-4 sm:grid-cols-3 mb-5 gap-1 col-span-6 cursor-pointer hover:scale-105 transition-all transform duration-150 ease-out"
                 >
                   <h1 className="userInfo">
                     {item?.name || (
