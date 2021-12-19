@@ -28,9 +28,11 @@ function profile({ session }) {
   );
 
   const onSubmit = (data) => {
-    const { email } = data;
+    console.log("you data data", data)
+    const { email, role } = data;
     const newUser = JSON.stringify({
       email: email,
+      role,
     });
     mutateAsync(newUser);
     reset();
@@ -87,20 +89,20 @@ function profile({ session }) {
                 id="email"
               />
 
-              {/* <div className="flex justify-evenly my-2 text-lg font-semibold text-gray-600">
+              <div className="flex justify-evenly my-2 text-lg font-semibold text-gray-600">
                 <div className="flex items-center space-x-2">
                   <label htmlFor="admin">ADMIN</label>
-                  <input {...register("admin", {
+                  <input {...register("role", {
                     required: "ROLE IS REQUIRED",
-                  })} type="radio" name="admin" id="admin" />
+                  })} type="radio" value="admin" />
                 </div>
                 <div className="flex items-center space-x-2">
                   <label htmlFor="user">USER</label>
-                  <input {...register("user", {
+                  <input {...register("role", {
                     required: "ROLE IS REQUIRED",
-                  })} type="radio" name="user" id="user" />
+                  })} type="radio" value="user" />
                 </div>
-              </div> */}
+              </div>
 
               <button className="formSubmitBtn w-full mx-auto" type="submit">
                 Add User
@@ -148,7 +150,7 @@ export async function getServerSideProps({ req }) {
   if (!session) {
     return {
       redirect: {
-        destination: "/",
+        destination: "/auth/signin",
         permanent: false,
       },
     };

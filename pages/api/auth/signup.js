@@ -9,12 +9,12 @@ export default async function handler(req, res) {
     const userCol = client.db("hair_salon").collection("nextauth");
 
     const existingUser = await userCol.findOne({ email: email });
-
+    console.log("HEY",existingUser.password)
     try {
-      if (!existingUser) {
+      if (!existingUser || existingUser.password) {
         return res.json({ message: "Access Denied", success: false });
       } else {
-        await userCol.update({ email: email }, {$set: { name: name, role: "user", password: await hashPass(password, 12) }});
+        await userCol.update({ email: email }, {$set: { name: name, password: await hashPass(password, 12) }});
         return res.json({
           message: "User created",
           success: true,

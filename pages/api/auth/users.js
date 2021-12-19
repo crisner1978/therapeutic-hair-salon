@@ -1,4 +1,3 @@
-import { getListSubheaderUtilityClass } from "@mui/material";
 import clientPromise from "../../../lib/mongodb";
 
 export default async function handler(req, res) {
@@ -17,13 +16,14 @@ export default async function handler(req, res) {
 
 async function addUser(req, res) {
   if (req.method === "POST") {
-    const { email } = req.body;
+    const { email, role } = req.body;
+    console.log("role baby role", role)
 
     const client = await clientPromise;
     const userCol = await client.db("hair_salon").collection("nextauth");
 
     try {
-      await userCol.insertOne({ email: email });
+      await userCol.insertOne({ email: email, role: role });
       return res.status(200).json({ message: "User created!", success: true });
     } catch (error) {
       res.status(400).json({ message: error.message, success: false });
