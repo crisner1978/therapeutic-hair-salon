@@ -41,14 +41,18 @@ function profile({ session }) {
   );
 
   return (
-    <div className="flex flex-col items-center justify-center text-left space-y-5 py-8 min-h-screen px-3">
+    <div
+      className={`flex flex-col items-center justify-center text-left space-y-5 py-8 min-h-screen px-3 ${
+        data.role === "user" && "-mt-32"
+      }`}
+    >
       <h1 className="text-2xl sm:text-3xl font-medium text-blue-600 border-b-2 pb-2 text-center">
         Hey {data.user.name}!
       </h1>
       <h3 className="text-xl sm:text-2xl">
         You're assigned the role of{" "}
         <span className="font-black text-blue-600">
-          {data.role.toUpperCase()}
+          {data?.role?.toUpperCase()}
         </span>
       </h3>
       <h3 className="text-xl sm:text-2xl">Email: {data.user.email}</h3>
@@ -82,6 +86,21 @@ function profile({ session }) {
                 name="email"
                 id="email"
               />
+
+              {/* <div className="flex justify-evenly my-2 text-lg font-semibold text-gray-600">
+                <div className="flex items-center space-x-2">
+                  <label htmlFor="admin">ADMIN</label>
+                  <input {...register("admin", {
+                    required: "ROLE IS REQUIRED",
+                  })} type="radio" name="admin" id="admin" />
+                </div>
+                <div className="flex items-center space-x-2">
+                  <label htmlFor="user">USER</label>
+                  <input {...register("user", {
+                    required: "ROLE IS REQUIRED",
+                  })} type="radio" name="user" id="user" />
+                </div>
+              </div> */}
 
               <button className="formSubmitBtn w-full mx-auto" type="submit">
                 Add User

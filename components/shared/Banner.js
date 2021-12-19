@@ -6,7 +6,7 @@ const Banner = ({ children }) => {
     <section className="relative h-[600px] lg:h-[650px] xl:h-[750px] -top-44 right-0">
       {children}
       <Image
-        src="/images/cellGradientBackground@2x.png"
+        src="/images/cellBackBottom.png"
         layout="fill"
         objectFit="cover"
         objectPosition="top"

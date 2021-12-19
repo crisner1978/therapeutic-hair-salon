@@ -14,7 +14,7 @@ export default async function handler(req, res) {
       if (!existingUser) {
         return res.json({ message: "Access Denied", success: false });
       } else {
-        await userCol.update({ email: email }, {$set: { name: name, password: await hashPass(password, 12) }});
+        await userCol.update({ email: email }, {$set: { name: name, role: "user", password: await hashPass(password, 12) }});
         return res.json({
           message: "User created",
           success: true,
