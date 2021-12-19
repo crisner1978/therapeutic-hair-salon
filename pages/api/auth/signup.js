@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     const userCol = client.db("hair_salon").collection("nextauth");
 
     const existingUser = await userCol.findOne({ email: email });
-    console.log("HEY",existingUser.password)
+
     try {
       if (!existingUser || existingUser.password) {
         return res.json({ message: "Access Denied", success: false });
