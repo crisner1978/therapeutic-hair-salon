@@ -3,38 +3,38 @@
 @tailwind utilities;
 
 @layer base {
-    @font-face {
-        font-family: Avenir Next;
-        src: url("/public/fonts/AvenirNext-Regular.ttf")
-    }
+  @font-face {
+    font-family: Avenir Next;
+    src: url("/public/fonts/AvenirNext-Regular.ttf");
+  }
 }
 
 @layer components {
-    
-    .toasty {
-        @apply text-2xl font-semibold
-    }
-    
-    /* form styles */
-    .inputWrapper {
-        @apply flex flex-col;    
-    }
-    .formLabel {
-        @apply text-sm font-black text-gray-600 pb-1
-    }
-    .formInput { 
-        @apply bg-gray-200 bg-opacity-90 font-semibold focus:ring-0 outline-none border-none mb-3 rounded-md;
-    }    
-    .formSubmitBtn {
-        @apply text-xl font-bold disabled:text-gray-300
+  .toasty {
+    @apply text-2xl font-semibold;
+  }
+
+  /* form styles */
+  .inputWrapper {
+    @apply flex flex-col;
+  }
+  .formLabel {
+    @apply text-sm font-black text-gray-600 pb-1;
+  }
+  .formInput {
+    @apply bg-gray-200 bg-opacity-90 font-semibold focus:ring-0 outline-none border-none mb-3 rounded-md;
+  }
+  .formSubmitBtn {
+    @apply text-xl font-bold disabled:text-gray-300
         disabled:cursor-not-allowed py-2 text-blue-600 mx-4
         hover:text-white hover:bg-blue-600 rounded-md max-w-full
-    }
-    .formErrorMsg {
-        @apply absolute right-8 text-red-500 font-black text-sm
-    }
-    .userInfo {
-        @apply text-sm sm:text-base font-medium text-gray-600 
-    }
+        shadow-lg active:scale-95 transition-all transform duration-150
+        border-blue-600 border-2;
+  }
+  .formErrorMsg {
+    @apply absolute right-8 text-red-500 font-black text-sm;
+  }
+  .userInfo {
+    @apply text-sm sm:text-base font-medium text-gray-600;
+  }
 }
-

@@ -54,8 +54,8 @@ export default NextAuth({
       session.role = token.role;
       return session;
     },
-    redirect: async(url, baseUrl) => {
-      return '/profile';
+    redirect: async (url, baseUrl) => {
+      return "/profile";
     },
   },
   secret: "fjkerabgiveowpnjnrvjmcxdkgnr132rvdfz",

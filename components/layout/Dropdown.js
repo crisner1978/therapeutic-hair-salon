@@ -1,5 +1,5 @@
 import { Menu, Transition } from "@headlessui/react";
-import { getProviders, signIn, signOut, useSession } from "next-auth/react";
+import { getProviders, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { Fragment } from "react";
 import { FaBars } from "react-icons/fa";
@@ -22,7 +22,10 @@ function Dropdown() {
           <Menu.Button>
             <div
               className={`flex items-center ${
-                asPath === "/dashboard" || asPath === "/auth/signin" || asPath === '/profile' || asPath === '/scheduler'
+                asPath === "/dashboard" ||
+                asPath === "/auth/signin" ||
+                asPath === "/profile" ||
+                asPath === "/scheduler"
                   ? "text-black"
                   : "text-white"
               }`}
@@ -42,7 +45,10 @@ function Dropdown() {
           >
             <Menu.Items
               className={`${
-                asPath === "/dashboard" || asPath === "/auth/signin" || asPath === '/profile' || asPath === '/scheduler'
+                asPath === "/dashboard" ||
+                asPath === "/auth/signin" ||
+                asPath === "/profile" ||
+                asPath === "/scheduler"
                   ? "bg-black text-white"
                   : "bg-white bg-opacity-90 text-opacity-100 text-gray-900"
               } flex flex-col absolute w-60 inset-x-0 -left-1 -top-14 space-y-5 py-10 -mt-2 -ml-10 pl-[74px] h-96 
@@ -51,14 +57,20 @@ function Dropdown() {
               <Menu.Button className="mt-6 -ml-7">
                 <div
                   className={`flex items-center ${
-                    asPath === "/dashboard" || asPath === "/auth/signin" || asPath === '/profile' || asPath === '/scheduler'
+                    asPath === "/dashboard" ||
+                    asPath === "/auth/signin" ||
+                    asPath === "/profile" ||
+                    asPath === "/scheduler"
                       ? "text-white"
                       : "text-black"
                   }`}
                 >
                   <HiOutlineX
                     className={`mt-1 w-8 h-8 ${
-                      asPath === "/dashboard" || asPath === "/auth/signin" || asPath === '/profile' || asPath === '/scheduler'
+                      asPath === "/dashboard" ||
+                      asPath === "/auth/signin" ||
+                      asPath === "/profile" ||
+                      asPath === "/scheduler"
                         ? "text-white"
                         : "text-black"
                     }`}
@@ -77,12 +89,20 @@ function Dropdown() {
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <MyLink active={active} href="/dashboard" name="dashboard" />
+                      <MyLink
+                        active={active}
+                        href="/dashboard"
+                        name="dashboard"
+                      />
                     )}
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <MyLink active={active} href='/scheduler' name='scheduler' />
+                      <MyLink
+                        active={active}
+                        href="/scheduler"
+                        name="scheduler"
+                      />
                     )}
                   </Menu.Item>
                   <Menu.Item>

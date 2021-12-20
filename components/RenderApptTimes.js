@@ -20,7 +20,7 @@ export default function RenderApptTimes({ data, register, errors }) {
         {!slotFilled && (
           <FormControlLabel
             {...register("slot", {
-                required: 'SELECT A TIME',
+              required: "SELECT A TIME",
             })}
             value={slot}
             control={<Radio />}
@@ -28,8 +28,8 @@ export default function RenderApptTimes({ data, register, errors }) {
           />
         )}
         <span className="absolute top-[2.5px] -right-1 text-red-500 font-black text-sm">
-              {errors.slot?.message}
-            </span>
+          {errors.slot?.message}
+        </span>
       </React.Fragment>
     );
   });

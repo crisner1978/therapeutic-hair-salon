@@ -1,15 +1,15 @@
-import Banner from "../components/shared/Banner";
 import Image from "next/image";
-import BookAppt from "../components/BookAppt"
-import SalonHours from "../components/shared/SalonHours";
+import BookAppt from "../components/BookAppt";
+import Banner from "../components/shared/Banner";
 import GoogleMap from "../components/shared/GoogleMap";
+import SalonHours from "../components/shared/SalonHours";
 
 const Book = () => {
   return (
     <div>
       <Banner>
         <Image
-          src="http://res.cloudinary.com/dtram9qiy/image/upload/v1638294068/my-uploads/p7233rjdqsvjnkop2gdm.jpg"
+          src="https://res.cloudinary.com/dtram9qiy/image/upload/v1638294068/hairSalonHeros/salon_tools.jpg"
           layout="fill"
           objectFit="cover"
           objectPosition="left"

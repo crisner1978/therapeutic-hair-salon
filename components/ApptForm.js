@@ -65,13 +65,11 @@ export default function ApptForm() {
       },
     };
     mutateAsync(bookedAppt);
-    reset()
+    reset();
   };
 
   const fetchSchedule = (today) =>
-    fetch("/api/available?term=" + today).then((res) =>
-      res.json()
-    );
+    fetch("/api/available?term=" + today).then((res) => res.json());
 
   const { data } = useQuery(["available", today], () => fetchSchedule(today));
 
@@ -120,7 +118,7 @@ export default function ApptForm() {
                 placeholderText="SELECT DATE"
                 showPopperArrow={false}
                 popperPlacement="bottom"
-                popperClassName=''
+                popperClassName=""
                 selected={field.value}
                 filterDate={isWorkWeek}
                 minDate={new Date()}
@@ -131,7 +129,7 @@ export default function ApptForm() {
               />
             )}
           />
-        
+
           <div className="inputWrapper">
             <label className="formLabel" htmlFor="NAME">
               NAME
@@ -194,7 +192,12 @@ export default function ApptForm() {
           </div>
         </div>
 
-        <button type="submit" className={`formSubmitBtn ${router.asPath === '/scheduler' && 'mx-0 '}`}>
+        <button
+          type="submit"
+          className={`formSubmitBtn ${
+            router.asPath === "/scheduler" && "mx-4 "
+          }`}
+        >
           MAKE APPOINTMENT
         </button>
       </form>

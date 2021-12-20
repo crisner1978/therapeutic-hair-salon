@@ -1,6 +1,6 @@
-import "../styles/globals.css";
-import AppProviders from "../components/AppProviders";
 import { SessionProvider } from "next-auth/react";
+import AppProviders from "../components/AppProviders";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (

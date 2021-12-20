@@ -1,7 +1,7 @@
 import { getSession, useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useMutation, useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 
 function profile({ session }) {
   const { data, status } = useSession();
@@ -13,6 +13,8 @@ function profile({ session }) {
     formState: { errors },
   } = useForm({ mode: "onBlur" });
 
+  const queryClient = useQueryClient();
+
   const { mutateAsync } = useMutation(
     (newUser) =>
       fetch("/api/auth/users", {
@@ -22,13 +24,14 @@ function profile({ session }) {
       }),
     {
       onSuccess: () => {
+        queryClient.invalidateQueries("users");
         toast.success("User Added");
       },
     }
   );
 
   const onSubmit = (data) => {
-    console.log("you data data", data)
+    console.log("you data data", data);
     const { email, role } = data;
     const newUser = JSON.stringify({
       email: email,
@@ -92,15 +95,23 @@ function profile({ session }) {
               <div className="flex justify-evenly my-2 text-lg font-semibold text-gray-600">
                 <div className="flex items-center space-x-2">
                   <label htmlFor="admin">ADMIN</label>
-                  <input {...register("role", {
-                    required: "ROLE IS REQUIRED",
-                  })} type="radio" value="admin" />
+                  <input
+                    {...register("role", {
+                      required: "ROLE IS REQUIRED",
+                    })}
+                    type="radio"
+                    value="admin"
+                  />
                 </div>
                 <div className="flex items-center space-x-2">
                   <label htmlFor="user">USER</label>
-                  <input {...register("role", {
-                    required: "ROLE IS REQUIRED",
-                  })} type="radio" value="user" />
+                  <input
+                    {...register("role", {
+                      required: "ROLE IS REQUIRED",
+                    })}
+                    type="radio"
+                    value="user"
+                  />
                 </div>
               </div>
 

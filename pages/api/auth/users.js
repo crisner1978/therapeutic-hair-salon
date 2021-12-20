@@ -17,7 +17,7 @@ export default async function handler(req, res) {
 async function addUser(req, res) {
   if (req.method === "POST") {
     const { email, role } = req.body;
-    console.log("role baby role", role)
+    console.log("role baby role", role);
 
     const client = await clientPromise;
     const userCol = await client.db("hair_salon").collection("nextauth");
@@ -53,7 +53,7 @@ async function getUsers(req, res) {
 //     try {
 //       const result = await userCol.deleteOne({ })
 //     } catch (error) {
-      
+
 //     }
 //   }
 // }

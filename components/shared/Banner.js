@@ -6,13 +6,13 @@ const Banner = ({ children }) => {
     <section className="relative h-[600px] lg:h-[650px] xl:h-[750px] -top-44 right-0">
       {children}
       <Image
-        src="/images/cellBackBottom.png"
+        src="https://res.cloudinary.com/dtram9qiy/image/upload/v1639963844/hairSalonHeros/tndjyg87iw6nbrnfzspk.png"
         layout="fill"
         objectFit="cover"
         objectPosition="top"
       />
       <Image
-        src="http://res.cloudinary.com/dtram9qiy/image/upload/v1638294355/my-uploads/wgx5qjm0wqefiyk88fsn.png"
+        src="https://res.cloudinary.com/dtram9qiy/image/upload/v1638294355/hairSalonHeros/wgx5qjm0wqefiyk88fsn.png"
         layout="fill"
         objectFit="cover"
         objectPosition="bottom"

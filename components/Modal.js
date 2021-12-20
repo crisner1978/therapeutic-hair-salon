@@ -1,7 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react/cjs/react.production.min";
-import { modalState } from "../atoms/modalAtom";
 import { useRecoilState } from "recoil";
+import { modalState } from "../atoms/modalAtom";
 import ApptForm from "./ApptForm";
 
 const Modal = () => {
@@ -46,7 +46,9 @@ const Modal = () => {
               className="fixed inline-block bg-white rounded-md p-5 text-left overflow-hidden
                 shadow-xl transform transition-all my-8 align-middle max-w-sm w-full "
             >
-              <h1 className="text-xl font-bold text-center mb-3">BOOK YOUR APPOINTMENT</h1>
+              <h1 className="text-xl font-bold text-center mb-3">
+                BOOK YOUR APPOINTMENT
+              </h1>
               <ApptForm />
             </div>
           </Transition.Child>

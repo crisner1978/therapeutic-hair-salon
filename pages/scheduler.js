@@ -9,7 +9,8 @@ function scheduler() {
       </h1>{" "}
       <div
         className="inline-block bg-white rounded-md p-5 text-left
-                sm:shadow-lg transform transition-all my-8 align-middle max-w-sm w-full">
+                sm:shadow-lg transform transition-all my-8 align-middle max-w-sm w-full"
+      >
         <ApptForm />
       </div>
     </div>

@@ -44,7 +44,11 @@ function signin({ providers }) {
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col max-w-sm mx-auto px-3 sm:ml-6 py-10"
           >
-            <span className="mx-auto mb-5 text-xl text-red-500 font-black">
+            <span
+              className={`mx-auto mb-5 text-xl ${
+                message === "Access Denied" && "text-red-500"
+              } text-blue-600 font-black`}
+            >
               {message}
             </span>
             <div
@@ -52,7 +56,7 @@ function signin({ providers }) {
                 isLogin
                   ? "border-blue-600 border-2 text-blue-600 "
                   : "border-red-500 border-2 text-red-500 bg-gray-100"
-              } shadow-lg font-black rounded-lg py-2 mb-5 hover:scale-105`}
+              } shadow-lg font-black rounded-lg py-2 mb-5 active:scale-95 transition-all transform duration-150`}
             >
               <h3
                 className="text-2xl font-semibold  cursor-pointer"

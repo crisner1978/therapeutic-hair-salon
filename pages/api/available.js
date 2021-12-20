@@ -7,9 +7,9 @@ export default async function handler(req, res) {
   const books = await db
     .collection("appts")
     .aggregate([
-        {
-            $match: { "slot.date": req.query.term}
-        }
+      {
+        $match: { "slot.date": req.query.term },
+      },
     ])
     .toArray();
 

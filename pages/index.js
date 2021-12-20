@@ -2,26 +2,28 @@ import Head from "next/head";
 import Image from "next/image";
 import BookAppt from "../components/BookAppt";
 import Banner from "../components/shared/Banner";
-import Photos from "../components/shared/Photos";
+import GoogleMap from "../components/shared/GoogleMap";
 import SalonHours from "../components/shared/SalonHours";
 import SalonServices from "../components/shared/SalonServices";
-import GoogleMap from "../components/shared/GoogleMap"
 
 export default function Home() {
   return (
     <div className="">
       <Head>
         <title>Therapeutic Hair Salon & Scalp Clinic</title>
+        <meta
+          name="description"
+          content="Hair Salon and Scalp Clinic in Memphis, TN!"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Banner>
         <Image
-          src="https://res.cloudinary.com/dtram9qiy/image/upload/v1638239490/my-uploads/inrjo2lmlyin9gdtgvy6.jpg"
+          src="https://res.cloudinary.com/dtram9qiy/image/upload/v1638239490/hairSalonHeros/inrjo2lmlyin9gdtgvy6.jpg"
           layout="fill"
           objectFit="cover"
           objectPosition="top"
-          priority
-          as="photos"
+          as="hero"
         />
       </Banner>
       <main>
@@ -41,7 +43,6 @@ export default function Home() {
         <SalonServices />
         <SalonHours />
         <BookAppt />
-        <Photos />
         <GoogleMap />
       </main>
     </div>

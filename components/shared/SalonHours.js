@@ -1,3 +1,4 @@
+import Link from "next/dist/client/link";
 import { workDays } from "./ListData";
 
 const SalonHours = () => {
@@ -21,6 +22,14 @@ const SalonHours = () => {
             </span>
           </div>
         ))}
+      </div>
+      <div className="flex justify-center">
+        <div
+          className="cursor-pointer border border-black px-14 py-3 text-xl font-semibold w-[236.85px]
+          hover:bg-black hover:text-white transition-all transform ease duration-200 hover:inset-2"
+        >
+          <Link href="/gallery">OUR WORK</Link>
+        </div>
       </div>
     </section>
   );

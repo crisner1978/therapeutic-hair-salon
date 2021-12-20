@@ -1,10 +1,10 @@
-import Footer from './Footer'
+import Modal from "../Modal";
+import Footer from "./Footer";
 import Header from "./Header";
-import Modal from "../Modal"
 
 function Layout({ children }) {
   return (
-    <div className="bg-gray-50 h-screen overflow-y-scroll scrollbar-hide">
+    <div className="bg-gray-50 h-screen">
       <Header />
       {children}
       <Footer />
