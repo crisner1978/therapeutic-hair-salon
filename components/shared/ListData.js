@@ -10,8 +10,8 @@ export const MenuItems = [
     active: false,
   },
   {
-    name: "Our Work",
-    href: "/ourwork",
+    name: "Gallery",
+    href: "/gallery",
     active: false,
   },
   {

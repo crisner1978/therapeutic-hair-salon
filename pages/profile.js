@@ -31,7 +31,6 @@ function profile({ session }) {
   );
 
   const onSubmit = (data) => {
-    console.log("you data data", data);
     const { email, role } = data;
     const newUser = JSON.stringify({
       email: email,
@@ -44,7 +43,6 @@ function profile({ session }) {
   const { data: users } = useQuery("users", () =>
     fetch("/api/auth/users").then((res) => res.json())
   );
-  console.log("USERS", users);
 
   const handleDelete = async (id) => {
     try {

@@ -11,7 +11,7 @@ const OurWork = ({ images, nextCursor }) => {
     <div>
       <Head>
         <title>Gallery - Therapeutic Hair Salon & Scalp Clinic</title>
-        <meta name="description" content="Our work hair services and scalp treatments gallery and care" />
+        <meta name="description" content="Our work of hair services and scalp treatments gallery and care" />
         <meta property="og:title" title="Gallery - Therapeutic Hair Salon & Scalp Clinic - We specialize in hair care and scalp treatments along with hair and scalp products." />
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>

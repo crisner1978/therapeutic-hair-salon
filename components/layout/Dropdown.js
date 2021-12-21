@@ -84,7 +84,10 @@ function Dropdown() {
                 <>
                   <Menu.Item>
                     {({ active }) => (
-                      <MyLink active={active} href="/profile" name="profile" />
+                      <MyLink 
+                        active={active} 
+                        href="/profile" 
+                        name="profile" />
                     )}
                   </Menu.Item>
                   <Menu.Item>
