@@ -11,10 +11,8 @@ export default function Home() {
     <div className="">
       <Head>
         <title>Therapeutic Hair Salon & Scalp Clinic</title>
-        <meta
-          name="description"
-          content="Hair Salon and Scalp Clinic in Memphis, TN!"
-        />
+        <meta name="description" content="Therapeutic Hair Salon and Scalp Clinic in Memphis, TN!" />
+        <meta property="og:title" title="Therapeutic Hair Salon & Scalp Clinic - We specialize in hair and scalp products along with services." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Banner>

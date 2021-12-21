@@ -15,8 +15,3 @@ export default async function handler(req, res) {
 
   res.json(books);
 }
-
-// const books = await db
-//   .collection("appts")
-//   .find({ "slot.date": req.query.term })
-//   .toArray();

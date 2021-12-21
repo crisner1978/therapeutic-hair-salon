@@ -1,25 +1,26 @@
 import { getSession } from "next-auth/react";
-import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { formatPhoneNumber } from "react-phone-number-input";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 
 const Dashboard = ({ session }) => {
-  const router = useRouter();
   const queryClient = useQueryClient();
 
   const { data } = useQuery("schedule", () => fetchSchedule());
 
-  const fetchSchedule = () => fetch("/api/scheduled").then((res) => res.json());
+  const fetchSchedule = () =>
+    fetch("/api/book", {
+      method: "GET",
+    }).then((res) => res.json());
 
   const handleDelete = async (id) => {
-    router.query = id;
+    // router.query = id;
     try {
-      const deleted = await fetch("/api/" + id, {
+      const deleted = await fetch("/api/book", {
         method: "DELETE",
+        body: id,
       });
-
-      console.log(deleted);
+      console.log("deleted", deleted);
     } catch (error) {
       console.log(error);
     }
@@ -32,10 +33,17 @@ const Dashboard = ({ session }) => {
   });
 
   return (
-    <div className="pb-20">
+    <div className="pb-20 min-h-screen bg-white">
       <h1 className="text-center text-3xl font-medium my-10 shadow-md pb-5">
-        Appointments
+        Appointments - {data?.length}
       </h1>
+      {data?.length < 1 && (
+        <div className="flex justify-center pt-20">
+          <h1 className="text-2xl font-medium text-gray-600">
+            No Appointments Scheduled
+          </h1>
+        </div>
+      )}
       {data?.map(({ slot: { date, time }, name, phone, email, _id: id }) => (
         <div
           key={id}
@@ -71,7 +79,7 @@ export default Dashboard;
 
 export async function getServerSideProps({ req }) {
   const session = await getSession({ req });
-  console.log(session);
+
 
   if (!session) {
     return {

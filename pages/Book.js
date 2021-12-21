@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Head from "next/dist/shared/lib/head";
 import BookAppt from "../components/BookAppt";
 import Banner from "../components/shared/Banner";
 import GoogleMap from "../components/shared/GoogleMap";
@@ -7,6 +8,12 @@ import SalonHours from "../components/shared/SalonHours";
 const Book = () => {
   return (
     <div>
+      <Head>
+        <title>Book Appointment - Therapeutic Hair Salon & Scalp Clinic</title>
+        <meta name="description" content="Book appointment for your hair service and scalp treatment care, service and/or treatment" />
+        <meta property="og:title" title="Book Appointment - Therapeutic Hair Salon & Scalp Clinic - We specialize in hair care and scalp treatments along with hair and scalp products." />
+        <link rel="shortcut icon" href="/favicon.ico" />
+      </Head>
       <Banner>
         <Image
           src="https://res.cloudinary.com/dtram9qiy/image/upload/v1638294068/hairSalonHeros/salon_tools.jpg"

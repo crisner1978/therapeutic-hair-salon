@@ -1,7 +1,7 @@
 import { getSession } from "next-auth/react";
 import ApptForm from "../components/ApptForm";
 
-function scheduler() {
+function scheduler({ session }) {
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center">
       <h1 className="text-center text-3xl font-medium mt-2 border-b-2 px-10 pb-5">

@@ -41,6 +41,9 @@ export default function ApptForm() {
       }),
     {
       onSuccess: async () => {
+        if (router.asPath === "/scheduler") {
+          window.location.reload();
+        }
         toast.success("Appointment Booked!");
         setOpen(false);
       },
@@ -52,6 +55,7 @@ export default function ApptForm() {
 
   const onSubmit = (data) => {
     const { name, email, phone, date, slot } = data;
+
     const bookedAppt = {
       name,
       email,
@@ -64,6 +68,7 @@ export default function ApptForm() {
         booked: true,
       },
     };
+
     mutateAsync(bookedAppt);
     reset();
   };

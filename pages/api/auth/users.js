@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import clientPromise from "../../../lib/mongodb";
 
 export default async function handler(req, res) {
@@ -45,15 +46,16 @@ async function getUsers(req, res) {
   }
 }
 
-// async function deleteUser(req, res) {
-//   if(req.method === 'DELETE') {
-//     const client = await clientPromise;
-//     const userCol = await client.db("hair_salon").collection("nextauth");
+async function deleteUser(req, res) {
+  if (req.method === "DELETE") {
+    const client = await clientPromise;
+    const userCol = await client.db("hair_salon").collection("nextauth");
 
-//     try {
-//       const result = await userCol.deleteOne({ })
-//     } catch (error) {
-
-//     }
-//   }
-// }
+    try {
+      const user = await userCol.deleteOne({ _id: ObjectId(req.body) });
+      return res.status(200).json({ success: true, data: {} });
+    } catch (error) {
+      return res.status(400).json({ success: false });
+    }
+  }
+}

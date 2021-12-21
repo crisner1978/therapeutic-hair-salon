@@ -44,6 +44,26 @@ function profile({ session }) {
   const { data: users } = useQuery("users", () =>
     fetch("/api/auth/users").then((res) => res.json())
   );
+  console.log("USERS", users);
+
+  const handleDelete = async (id) => {
+    try {
+      const deleted = await fetch("/api/auth/users", {
+        method: "DELETE",
+        body: id,
+      });
+      console.log("deleted", deleted);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const mutation = useMutation(handleDelete, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("users");
+      toast.success("User Deleted");
+    },
+  });
 
   return (
     <div
@@ -52,7 +72,7 @@ function profile({ session }) {
       }`}
     >
       <h1 className="text-2xl sm:text-3xl font-medium text-blue-600 border-b-2 pb-2 text-center">
-        Hey {data.user.name}!
+        Hey {data?.user.name}!
       </h1>
       <h3 className="text-xl sm:text-2xl">
         You're assigned the role of{" "}
@@ -60,7 +80,7 @@ function profile({ session }) {
           {data?.role?.toUpperCase()}
         </span>
       </h3>
-      <h3 className="text-xl sm:text-2xl">Email: {data.user.email}</h3>
+      <h3 className="text-xl sm:text-2xl">Email: {data?.user.email}</h3>
 
       <div className="flex flex-col justify-center items-center">
         {data.role === "admin" ? (
@@ -121,28 +141,36 @@ function profile({ session }) {
             </form>
             <ul>
               <h1 className="text-center mb-5 text-xl sm:text-2xl font-medium text-gray-600">
-                ALLOWED USERS
+                ALLOWED USERS - {users?.length}
               </h1>
-              {users?.map((item) => (
+              {users?.map(({ _id: id, name, email, role }) => (
                 <li
-                  key={item._id}
-                  className="grid grid-cols-1 shadow-md px-10 py-4 sm:grid-cols-3 mb-5 gap-1 col-span-6 cursor-pointer hover:scale-105 transition-all transform duration-150 ease-out"
+                  key={id}
+                  className="grid grid-cols-1 shadow-md px-10 py-4 md:grid-cols-4 mb-5 gap-x-10 col-span-6 hover:scale-105 transition-all transform duration-150 ease-out"
                 >
                   <h1 className="userInfo">
-                    {item?.name || (
+                    {name || (
                       <span className="text-sm sm:text-base font-medium text-red-400">
                         NEEDS TO REGISTER
                       </span>
                     )}
                   </h1>
-                  <p className="userInfo">{item?.email}</p>
+                  <p className="userInfo">{email}</p>
                   <p className="userInfo">
-                    {item?.role || (
+                    {role || (
                       <span className="text-sm sm:text-base font-medium text-red-400">
                         NEEDS TO REGISTER
                       </span>
                     )}
                   </p>
+                  <div>
+                    <button
+                      onClick={() => mutation.mutate(id)}
+                      className="text-red-300 hover:text-red-500 hover:font-medium"
+                    >
+                      Delete User
+                    </button>
+                  </div>
                 </li>
               ))}
             </ul>
