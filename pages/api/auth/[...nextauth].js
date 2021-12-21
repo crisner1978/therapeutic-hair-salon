@@ -5,7 +5,7 @@ import clientPromise from "../../../lib/mongodb";
 
 export default NextAuth({
   session: {
-    jwt: true,
+    strategy: "jwt",
   },
 
   providers: [
