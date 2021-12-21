@@ -5,7 +5,7 @@ import Banner from "../components/shared/Banner";
 import GoogleMap from "../components/shared/GoogleMap";
 import SalonHours from "../components/shared/SalonHours";
 
-const Book = () => {
+const Appointments = () => {
   return (
     <div>
       <Head>
@@ -42,4 +42,4 @@ const Book = () => {
   );
 };
 
-export default Book;
+export default Appointments;

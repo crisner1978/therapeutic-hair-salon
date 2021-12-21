@@ -6,7 +6,7 @@ import GoogleMap from "../components/shared/GoogleMap";
 import Photos from "../components/shared/Photos";
 import { mapImageResources, search } from "../lib/cloudinary";
 
-const Gallery = ({ images, nextCursor }) => {
+const OurWork = ({ images, nextCursor }) => {
   return (
     <div>
       <Head>
@@ -32,7 +32,7 @@ const Gallery = ({ images, nextCursor }) => {
   );
 };
 
-export default Gallery;
+export default OurWork;
 
 export async function getStaticProps() {
   const results = await search({

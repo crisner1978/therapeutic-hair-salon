@@ -5,7 +5,7 @@ import Banner from "../components/shared/Banner";
 import GoogleMap from "../components/shared/GoogleMap";
 import SalonServices from "../components/shared/SalonServices";
 
-const Services = () => {
+const Service = () => {
   return (
     <div className="">
       <Head>
@@ -30,4 +30,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Service;

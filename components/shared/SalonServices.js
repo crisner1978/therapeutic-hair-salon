@@ -6,7 +6,7 @@ const SalonServices = () => {
   return (
     <section
       className={`flex flex-col items-center justify-center w-full flex-1 px-10 text-center lg:text-left pb-20  ${
-        asPath === "/services"
+        asPath === "/service"
           ? "bg-white text-black -mt-36 pt-4"
           : "bg-black text-white pt-10"
       } `}

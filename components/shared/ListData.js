@@ -5,18 +5,18 @@ export const MenuItems = [
     active: false,
   },
   {
-    name: "Services",
-    href: "/services",
+    name: "Service",
+    href: "/service",
     active: false,
   },
   {
-    name: "Gallery",
-    href: "/gallery",
+    name: "Our Work",
+    href: "/ourwork",
     active: false,
   },
   {
-    name: "Book",
-    href: "/book",
+    name: "Appointments",
+    href: "/appointments",
     active: false,
   },
   {
