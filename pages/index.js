@@ -22,6 +22,7 @@ export default function Home() {
           objectFit="cover"
           objectPosition="top"
           as="hero"
+          priority
         />
       </Banner>
       <main>
