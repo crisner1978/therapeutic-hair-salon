@@ -4,9 +4,9 @@ import { verifyPass } from "../../../lib/encrypt";
 import clientPromise from "../../../lib/mongodb";
 
 export default NextAuth({
-  session: {
-    strategy: "jwt",
-  },
+  // session: {
+  //   strategy: "jwt",
+  // },
 
   providers: [
     CredentialsProvider({
