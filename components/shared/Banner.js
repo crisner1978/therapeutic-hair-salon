@@ -25,7 +25,7 @@ const Banner = ({ children }) => {
         href="/appointments"
         className="hidden md:flex flex-col text-right fixed py-[10px] pr-10 pl-6 text-xl text-white bg-black right-0 top-1/4 z-40"
       >
-        <span className="font-semibold">901 323-9900</span>
+        <span className="font-semibold">901 323-0005</span>
         <span>BOOK ONLINE NOW</span>
       </a>
       <div className="flex items-center justify-center text-right fixed p-[10px] text-xl text-white bg-black right-0 top-0 z-50 md:hidden">
