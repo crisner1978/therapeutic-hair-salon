@@ -11,9 +11,7 @@ export default class MyDocument extends Document {
   render() {
     let csp = `frame-src https://www.google.com/; script-src 'self' ${cspHashOf(
       NextScript.getInlineScriptSource(this.props))}; style-src 'self' ${cspHashOf(
-        NextScript.getInlineScriptSource(this.props))}; style-src-attr 'self' ${cspHashOf(
-            NextScript.getInlineScriptSource(this.props))}; style-src-elem 'self' ${cspHashOf(
-                NextScript.getInlineScriptSource(this.props))};` 
+        NextScript.getInlineScriptSource(this.props))}; ` 
         
     if (process.env.NODE_ENV !== "production") {
       csp = `style-src 'self' 'unsafe-inline'; default-src 'self'; img-src 'self' data:;
