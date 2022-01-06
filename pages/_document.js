@@ -9,10 +9,10 @@ const cspHashOf = (text) => {
 
 export default class MyDocument extends Document {
   render() {
-    let csp = `default-src 'self'; frame-src https://www.google.com/; script-src 'self' ${cspHashOf(
-      NextScript.getInlineScriptSource(this.props))}; style-src 'self' ${cspHashOf(
+    let csp = `default-src 'self'; frame-src https://www.google.com/; script-src ${cspHashOf(
+      NextScript.getInlineScriptSource(this.props))}; style-src ${cspHashOf(
         NextScript.getInlineScriptSource(this.props))}`;
-        
+
     if (process.env.NODE_ENV !== "production") {
       csp = `style-src 'self' 'unsafe-inline'; default-src 'self'; img-src 'self' data:;
        media-src res.cloudinary.com; frame-src https://www.google.com/; script-src 'unsafe-eval' 'self' ${cspHashOf( NextScript.getInlineScriptSource(this.props) )}`;
