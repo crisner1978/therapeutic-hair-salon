@@ -9,7 +9,7 @@ const cspHashOf = (text) => {
 
 export default class MyDocument extends Document {
   render() {
-    let csp = `default-src 'self'; script-src 'self' ${cspHashOf(
+    let csp = `default-src 'self'; frame-src https://www.google.com/; script-src 'self' ${cspHashOf(
       NextScript.getInlineScriptSource(this.props)
     )}`;
     if (process.env.NODE_ENV !== "production") {
