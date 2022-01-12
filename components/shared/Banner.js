@@ -30,7 +30,7 @@ const Banner = ({ children }) => {
       </a>
       <div className="flex items-center justify-center text-right fixed p-[10px] text-xl text-white bg-black right-0 top-0 z-50 md:hidden">
         <FaPhoneAlt className="text-base mr-2" />
-        <a href="tel:901 323-9900" className="">
+        <a href="tel:9013239900" className="">
           <span className="font-semibold pr-[7px]">901 323-9900</span>
         </a>
       </div>
