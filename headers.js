@@ -32,4 +32,8 @@ module.exports = [
     key: "Referrer-Policy",
     value: "strict-origin-when-cross-origin",
   },
+  {
+    key: "Access-Control-Allow-Origin",
+    value: '*',
+  },
 ];

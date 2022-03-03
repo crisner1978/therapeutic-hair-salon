@@ -1,13 +1,12 @@
+import { compare } from "bcryptjs";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { verifyPass } from "../../../lib/encrypt";
 import clientPromise from "../../../lib/mongodb";
 
 export default NextAuth({
-  // session: {
-  //   strategy: "jwt",
-  // },
-
+    session: {
+      strategy: "jwt",
+    },
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -29,7 +28,7 @@ export default NextAuth({
           if (!user) {
             throw new Error("No User Found!");
           }
-          const isValid = await verifyPass(credentials.password, user.password);
+          const isValid = await compare(credentials.password, user.password);
           if (!isValid) {
             throw new Error("Invalid Passowrd!");
           }
@@ -58,9 +57,9 @@ export default NextAuth({
       return "/profile";
     },
   },
-  secret: "fjkerabgiveowpnjnrvjmcxdkgnr132rvdfz",
+  secret: "supersecretsecret",
   jwt: {
-    secret: "fjkerabgiveowpnjnrvjmcxdkgnr132rvdfz",
+    secret: "supersecretsecret",
     encryption: true,
   },
   debug: true,
